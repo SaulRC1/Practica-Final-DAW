@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,35 +27,69 @@
 
             <div class="main-section flex-row flex-justify-content-start">
 
-                <div>
-                    <p class="roboto-condensed">Registrate en Défteros Market para comenzar a vender!</p>
-                    
-                    <div>
-                        <img src="${pageContext.request.contextPath}/images/alta_usuario/register1.png">
-                    </div>
-                </div>
+                <div class="image-div flex-column flex-align-items-center flex-justify-content-start">
+                    <p class="roboto-condensed image-title">¡Registrate en Défteros Market para comenzar a vender!</p>
 
-                <div>
-                    <form>
-                        <label for="correoElectronico">Correo Electrónico:</label><br>
-                        <input type="text" id="correoElectronico" name="correoElectronico"><br>
-                        <label for="clave">Contraseña:</label><br>
-                        <input type="text" id="clave" name="clave"><br>
-                        <label for="repetirClave">Repetir Contraseña:</label><br>
-                        <input type="text" id="repetirClave" name="repetirClave"><br>
-                        <label for="nombre">Nombre:</label><br>
-                        <input type="text" id="nombre" name="nombre"><br>
-                        <label for="codigoPostal">Código Postal:</label><br>
-                        <input type="text" id="codigoPostal" name="codigoPostal"><br>
-                        <label for="facebook">Facebook:</label><br>
-                        <input type="text" id="facebook" name="facebook"><br>
-                        <label for="twitter">Twitter:</label><br>
-                        <input type="text" id="twitter" name="twitter"><br>
-                        <label for="telefono">Teléfono De Contacto:</label><br>
-                        <input type="text" id="telefono" name="telefono">
-                    </form> 
+                    <div class="carroussel-image-div flex-column flex-align-items-center">
+                        <img src="${pageContext.request.contextPath}/images/alta_usuario/register1.png">
                 </div>
             </div>
+
+            <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
+                <form class="registro-form flex-column flex-justify-content-space-evenly">
+
+                    <!-- Correo Electronico -->
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="correoElectronico">Correo Electrónico:</label>
+                        <input class="roboto-condensed form-input" type="text" id="correoElectronico" name="correoElectronico" required>
+                    </div>
+
+                    <!-- Error en el correo electronico -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
+                    </div>
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="clave">Contraseña:</label>
+                        <input class="roboto-condensed form-input" type="text" id="clave" name="clave" required>
+                    </div>
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
+                        <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
+                    </div>
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="nombre">Nombre:</label>
+                        <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
+                    </div>
+
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="codigoPostal">Código Postal:</label>
+                        <input class="roboto-condensed form-input" type="text" id="codigoPostal" name="codigoPostal" required>
+                    </div>
+
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="facebook">Facebook:</label>
+                        <input class="roboto-condensed form-input" type="text" id="facebook" name="facebook">
+                    </div>
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="twitter">Twitter:</label>
+                        <input class="roboto-condensed form-input" type="text" id="twitter" name="twitter">
+                    </div>
+
+                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                        <label class="roboto-condensed form-label" for="telefono">Teléfono De Contacto:</label>
+                        <input class="roboto-condensed form-input" type="text" id="telefono" name="telefono" required>
+                    </div>
+                    
+                    <input class="roboto-condensed form-submit-button" type="submit" value="¡Registrame!">
+                </form> 
+            </div>
+        </div>
 
         <jsp:include page="components/footer.jsp"></jsp:include>
     </body>

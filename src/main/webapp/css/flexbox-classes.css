@@ -12,6 +12,26 @@
     justify-content: flex-start;
 }
 
+.flex-justify-content-end {
+    justify-content: flex-end;
+}
+
 .flex-align-items-center {
     align-items: center;
+}
+
+.flex-justify-content-space-around {
+    justify-content: space-around;
+}
+
+.flex-justify-content-space-evenly {
+    justify-content: space-evenly;
+}
+
+.flex-justify-content-center {
+    justify-content: center;
+}
+
+.hidden-element {
+    display: none;
 }

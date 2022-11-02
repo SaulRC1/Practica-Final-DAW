@@ -5,6 +5,14 @@
 
 .footer-p {
     margin-left: 20px;
-    margin-right: 70%;
+    background-color: red;
+    width: 20%;
+    max-height: 30px;
+}
+
+.footer-email-div {
+    background-color: yellow;
+    height: 100%;
+    width: calc(78% - 20px);
 }
 

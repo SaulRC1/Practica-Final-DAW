@@ -19,5 +19,62 @@ body {
 .main-section {
     height: calc(100% - 130px);
     min-height: 100px;
+    overflow: auto;
+}
+
+.image-div {
+    margin:20px;
+    width: 40%;
+}
+
+.carroussel-image-div {
+    height: 90%;
+}
+
+.carroussel-image-div img {
+    height: 100%;
+}
+
+.image-title {
+    font-size: 28px;
+}
+
+.form-div {
+    background-color: red;
+    width: 57%;
+}
+
+.registro-form {
+    background-color: purple;
+    height: 100%;
+    width: 100%;
+}
+
+.form-element {
+    background-color: red;
+    height: 50px;
+    min-height: 50px;
+}
+
+.form-label {
+    font-size: 18px;
+    margin-right: 10px;
+    background-color: green;
+}
+
+.form-input {
+    font-size: 16px;
+    width: 60%;
+}
+
+.form-submit-button {
+    width: 150px;
+    align-self: center;
+    height: 50px;
+    font-size: 20px;
+}
+
+.form-error {
+    
 }
 
