@@ -54,6 +54,7 @@ body {
     background-color: red;
     height: 50px;
     min-height: 50px;
+    margin-bottom: 1.5%;
 }
 
 .form-label {
@@ -71,10 +72,23 @@ body {
     width: 150px;
     align-self: center;
     height: 50px;
+    min-height: 50px;
     font-size: 20px;
 }
 
 .form-error {
     
+}
+
+.prefijo-movil-dropdown-list {
+    height: 100%;
+}
+
+.prefijo-movil-dropdown-list-button {
+    height: 100%;
+}
+
+.prefijo-movil-dropdown-list-button img {
+    height: 60%;
 }
 

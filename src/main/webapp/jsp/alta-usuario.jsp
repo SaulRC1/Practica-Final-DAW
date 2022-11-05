@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/alta-usuario/prefijo-movil-tag.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
     </head>
@@ -36,7 +37,10 @@
             </div>
 
             <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
-                <form class="registro-form flex-column flex-justify-content-space-evenly">
+                <form class="registro-form flex-column flex-justify-content-start" 
+                      action="${pageContext.request.contextPath}//alta-usuario"
+                      method="post" onsubmit="return validaAltaUsuario()"
+                      id="formulario-registro">
 
                     <!-- Correo Electronico -->
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -49,14 +53,25 @@
                         <p class="form-error">Error</p>
                     </div>
 
+                    <!-- Contraseña -->
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="clave">Contraseña:</label>
                         <input class="roboto-condensed form-input" type="text" id="clave" name="clave" required>
                     </div>
 
+                    <!-- Error en la contraseña -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
+                    </div>
+                    
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
                         <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
+                    </div>
+                    
+                    <!-- Error en repetir contraseña -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
                     </div>
 
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -64,26 +79,59 @@
                         <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
                     </div>
 
+                    <!-- Error en el nombre -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
+                    </div>
 
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="codigoPostal">Código Postal:</label>
                         <input class="roboto-condensed form-input" type="text" id="codigoPostal" name="codigoPostal" required>
                     </div>
 
+                    <!-- Error en el codigo postal -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
+                    </div>
 
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="facebook">Facebook:</label>
                         <input class="roboto-condensed form-input" type="text" id="facebook" name="facebook">
+                    </div>
+                    
+                    <!-- Error en el facebook -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
                     </div>
 
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="twitter">Twitter:</label>
                         <input class="roboto-condensed form-input" type="text" id="twitter" name="twitter">
                     </div>
+                    
+                    <!-- Error en el twitter -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
+                    </div>
 
                     <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                         <label class="roboto-condensed form-label" for="telefono">Teléfono De Contacto:</label>
+                        <div id="prefijos-movil" class="prefijo-movil-dropdown-list flex-column flex-justify-content-start">
+                            <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                <jsp:param name="prefijo" value="34"/>
+                                <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/spain.png"/>
+                            </jsp:include>
+                        </div>
+
+                        <button class="prefijo-movil-dropdown-list-button flex-column flex-justify-content-center flex-align-items-center">
+                            <img src="${pageContext.request.contextPath}/images/components/icons/arrow-down.png">
+                        </button>
                         <input class="roboto-condensed form-input" type="text" id="telefono" name="telefono" required>
+                    </div>
+                    
+                    <!-- Error en telefono de contacto -->
+                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                        <p class="form-error">Error</p>
                     </div>
                     
                     <input class="roboto-condensed form-submit-button" type="submit" value="¡Registrame!">
