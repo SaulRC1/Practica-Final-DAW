@@ -81,11 +81,31 @@ body {
 }
 
 .prefijo-movil-dropdown-list {
+    height: 50%;
+    background-color: white;
+    border: 2px solid black;
+    width: 120px;
+}
+
+.prefijo-movil-dropdown-list-body {
+    overflow: auto;
+    min-height: 100px;
+}
+
+.prefijo-movil-dropdown-list-main {
+    background-color: blue;
     height: 100%;
 }
 
 .prefijo-movil-dropdown-list-button {
-    height: 100%;
+    height: 55%;
+    background-color: white;
+    border: 2px solid black;
+    margin-right: 10px;
+}
+
+.prefijo-movil-dropdown-list-button:hover {
+    background-color: #6495ED;
 }
 
 .prefijo-movil-dropdown-list-button img {

@@ -1,8 +1,15 @@
 .prefijo-movil-tag {
-    height: 100%;
+    height: 25px;
+    background-color: white;
+}
+
+.prefijo-movil-tag:hover {
+    background-color: #6495ED;
 }
 
 .prefijo-movil-tag img {
     height: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 

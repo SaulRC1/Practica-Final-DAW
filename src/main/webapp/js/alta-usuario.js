@@ -1,9 +1,36 @@
 //############################### EVENTOS ######################################
 
+document.getElementById("prefijo-movil-list-button").addEventListener("click", () => {prefijoMovilListButtonClick();});
 
+//Click a elemento dentro de lista de prefijos
+let elementosPrefijosMoviles = document.getElementsByClassName("prefijo-movil-tag");
 
+for(let i = 0; i < elementosPrefijosMoviles.length; i++) {
+    
+    elementosPrefijosMoviles[i].addEventListener("click", () => {prefijoMovilListElementClick(event);});
+    
+}
 
 //############################## FUNCIONES #####################################
+
+function prefijoMovilListButtonClick() {
+    let botonListaPrefijosMoviles = document.getElementsByClassName("prefijo-movil-dropdown-list-body");
+    
+    if(botonListaPrefijosMoviles[0].style.display === "flex") {
+        
+        botonListaPrefijosMoviles[0].style.display = "none";
+        
+    } else {
+        
+        botonListaPrefijosMoviles[0].style.display = "flex";
+        
+    }
+}
+
+function prefijoMovilListElementClick(event) {
+    alert(event.target.childNodes[0]);
+    console.log(event.target.childNodes[3].innerHTML.textContent);
+}
 
 function validaAltaUsuario() {
     
