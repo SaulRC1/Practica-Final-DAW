@@ -13,15 +13,20 @@ import org.jboss.logging.Logger;
 
 /**
  *
- * @author SaulRC1
+ * @author Saul Rodriguez Naranjo
  */
 public class DataBaseSessionFactory {
     
+    //SessionFactory de donde sacaremos las sesiones para acceder a la base de datos
     private SessionFactory sessionFactory;
     
     //Tan solo ha de existir uno por aplicacion
     private StandardServiceRegistry serviceRegistry;
     
+    //Se utiliza para configurar algunas propiedades adicionales de Hibernate
+    private MetadataSources metadataSources;
+    
+    //sigue el patron singleton, sera el objeto de acceso al exterior
     private static DataBaseSessionFactory dataBaseSessionFactory = new DataBaseSessionFactory();
     
     private DataBaseSessionFactory() {
@@ -30,7 +35,11 @@ public class DataBaseSessionFactory {
         serviceRegistry = new StandardServiceRegistryBuilder()
                 .configure().build();
         
+        //Inicializamos las MetadataSources para establecer la configuracion adicional
+        initializeMetadataSources();
+        
         try {
+            
             Logger.getLogger(DataBaseSessionFactory.class.getName())
                     .log(Logger.Level.INFO, "Setting up database session factory");
             
@@ -38,6 +47,7 @@ public class DataBaseSessionFactory {
             
             Logger.getLogger(DataBaseSessionFactory.class.getName())
                     .log(Logger.Level.INFO, "Database session factory successfully created");
+            
         } catch (Exception e) {
             
             StandardServiceRegistryBuilder.destroy( serviceRegistry );
@@ -45,11 +55,34 @@ public class DataBaseSessionFactory {
         }
     
     }
+    
+    /**
+     * Inicializa las MetadataSources en funcion de nuestro StandardServiceRegistry.<br><br>
+     * 
+     * Es importante que este metodo se ejecute antes de instanciar la {@link SessionFactory}.
+     */
+    private void initializeMetadataSources() {
+        metadataSources = new MetadataSources(serviceRegistry);
+    }
 
+    /**
+     * Proporciona la {@link SessionFactory} ya inicializada para acceso directo 
+     * a la base de datos.
+     * 
+     * @return la {@link SessionFactory} para acceder a la base de datos
+     */
     public synchronized SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
+    /**
+     * Proporciona la DataBaseSessionFactory, que es un objeto de acceso a varias utilidades
+     * para maniobrar con Hibernate y la base de datos.<br><br>
+     * 
+     * Este objeto es unico por cada aplicación.
+     * 
+     * @return La instancia de DataBaseSessionFactory
+     */
     public synchronized static DataBaseSessionFactory getDataBaseSessionFactoryInstance() {
         return dataBaseSessionFactory;
     }
