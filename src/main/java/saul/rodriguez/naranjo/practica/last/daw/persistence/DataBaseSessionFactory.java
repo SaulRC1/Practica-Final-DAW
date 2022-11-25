@@ -43,10 +43,12 @@ public class DataBaseSessionFactory {
             Logger.getLogger(DataBaseSessionFactory.class.getName())
                     .log(Logger.Level.INFO, "Setting up database session factory");
             
-            sessionFactory = new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+            sessionFactory = metadataSources.buildMetadata().buildSessionFactory();
             
             Logger.getLogger(DataBaseSessionFactory.class.getName())
                     .log(Logger.Level.INFO, "Database session factory successfully created");
+            
+            addAnnotatedClasses();
             
         } catch (Exception e) {
             
@@ -88,7 +90,7 @@ public class DataBaseSessionFactory {
     }
     
     public void addAnnotatedClasses() {
-        
+        metadataSources.addPackage("saul.rodriguez.naranjo.practica.last.daw.models");
     }
     
     /**
