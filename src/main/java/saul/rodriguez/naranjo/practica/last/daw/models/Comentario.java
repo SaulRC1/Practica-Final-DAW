@@ -4,6 +4,7 @@
  */
 package saul.rodriguez.naranjo.practica.last.daw.models;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -89,5 +90,36 @@ public class Comentario {
     public void setVisibilidad(String visibilidad) {
         this.visibilidad = visibilidad;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + (int) (this.idComentario ^ (this.idComentario >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.usuario);
+        hash = 47 * hash + Objects.hashCode(this.articulo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comentario other = (Comentario) obj;
+        if (this.idComentario != other.idComentario) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        return Objects.equals(this.articulo, other.articulo);
+    }
+    
     
 }

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -40,8 +41,9 @@ public class Articulo {
     @JoinColumn(name = "id_usuario", foreignKey = @ForeignKey(name = "fk_usuario"))
     private Usuario usuario;
     
-    @Column(name = "categoria")
-    private String categoria;
+    @OneToOne
+    @JoinColumn(name = "id_categoria", foreignKey = @ForeignKey(name = "fk_categoria"))
+    private Categoria categoria;
     
     @Column(name = "nombre")
     private String nombre;
@@ -61,9 +63,10 @@ public class Articulo {
     @Column(name = "precio_venta")
     private float precioVenta;
     
+    /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
                fetch = FetchType.LAZY)
-    private List<Comentario> comentariosDelArticulo;
+    private List<Comentario> comentariosDelArticulo;*/
 
     public Articulo() {
     }
@@ -84,12 +87,8 @@ public class Articulo {
         this.usuario = usuario;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getNombre() {
@@ -140,6 +139,7 @@ public class Articulo {
         this.precioVenta = precioVenta;
     }
 
+    /*
     public List<Comentario> getComentariosDelArticulo() {
         return comentariosDelArticulo;
     }
@@ -152,6 +152,11 @@ public class Articulo {
             this.comentariosDelArticulo.add(comentario);
         }
         
+    }*/
+
+    @Override
+    public String toString() {
+        return "Articulo{" + "idArticulo=" + idArticulo + ", usuario=" + usuario + ", categoria=" + categoria + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado + ", anioAdquisicion=" + anioAdquisicion + ", rutaImagen=" + rutaImagen + ", precioVenta=" + precioVenta + '}';
     }
     
 }

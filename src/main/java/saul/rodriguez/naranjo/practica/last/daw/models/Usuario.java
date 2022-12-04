@@ -2,6 +2,7 @@ package saul.rodriguez.naranjo.practica.last.daw.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -50,13 +52,16 @@ public class Usuario {
     @Column(name = "telefono")
     private String telefono;
     
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
-               fetch = FetchType.LAZY)
+    @Column(name = "ruta_imagen")
+    private String rutaImagen;
+    
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
+               fetch = FetchType.EAGER, mappedBy = "usuario")
     private List<Comentario> comentariosPublicados;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
-               fetch = FetchType.LAZY)
-    private List<Articulo> articulosPublicados;
+               fetch = FetchType.EAGER, mappedBy = "usuario")
+    private List<Articulo> articulosPublicados;*/
     
     public Usuario() {
         
@@ -139,6 +144,15 @@ public class Usuario {
         return idUsuario;
     }
 
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
+
+    /*
     public List<Comentario> getComentariosPublicados() {
         return comentariosPublicados;
     }
@@ -177,5 +191,38 @@ public class Usuario {
             
         }
         
+    }*/
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", correoElectronico=" + correoElectronico + ", clave=" + clave + ", nombre=" + nombre + ", direccion=" + direccion + ", codigoPostal=" + codigoPostal + ", facebook=" + facebook + ", twitter=" + twitter + ", telefono=" + telefono + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + (int) (this.idUsuario ^ (this.idUsuario >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.correoElectronico);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.idUsuario != other.idUsuario) {
+            return false;
+        }
+        return Objects.equals(this.correoElectronico, other.correoElectronico);
+    }
+    
+    
 }

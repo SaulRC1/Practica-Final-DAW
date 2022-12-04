@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+
+.main-div {
+    height: 100%;
+    width: 100%;
+    background-color: purple;
+}
+
+.main-section {
+    height: calc(100% - 130px);
+    width: 100%;
+}
+
+.profile-data-div {
+    width: 35%;
+    background-color: red;
+}
+
+.image-div-profile-data-div {
+    height: 40%;
+    width: 100%;
+    background-color: blue;
+}
+
+.rounded-image-div {
+    height: 90%;
+    width: 40%;
+    border-radius: 50%;
+    background-color: white;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    margin-left: 10px;
+}
+
+.profile-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.first-data-section {
+    width: calc(55% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 90%;
+    background-color: brown;
+}
+
+.username {
+    font-size: 24px;
+}
