@@ -1,4 +1,14 @@
 .data-tag {
-    
+    margin: 10px;
 }
 
+.data-tag-icon {
+    height: 90%;
+    margin-right: 2%;
+}
+
+.data-tag-text {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}

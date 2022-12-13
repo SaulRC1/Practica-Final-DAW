@@ -1,6 +1,6 @@
 <%-- 
-    Document   : data-tag
-    Created on : 3 dic 2022, 16:46:52
+    Document   : anchor-tag
+    Created on : 9 dic 2022, 13:23:49
     Author     : SaulRC1
 --%>
 
@@ -9,6 +9,6 @@
     
     <img class="data-tag-icon" src="${param.icon}">
     
-    <p class="data-tag-text roboto-condensed">${param.data}</p>
+    <a href="${param.anchorLink}" class="data-tag-text roboto-condensed">${param.anchorAbbreviation}</a>
     
 </div>

@@ -1,5 +1,6 @@
 package saul.rodriguez.naranjo.practica.last.daw.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -62,6 +63,9 @@ public class Articulo {
     
     @Column(name = "precio_venta")
     private float precioVenta;
+    
+    @Column(name = "fecha_de_publicacion", columnDefinition = "DATE")
+    private LocalDate fechaDePublicacion;
     
     /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
@@ -156,7 +160,15 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo{" + "idArticulo=" + idArticulo + ", usuario=" + usuario + ", categoria=" + categoria + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado + ", anioAdquisicion=" + anioAdquisicion + ", rutaImagen=" + rutaImagen + ", precioVenta=" + precioVenta + '}';
+        return "Articulo{" + "idArticulo=" + idArticulo + ", usuario=" + usuario.getNombre() + ", categoria=" + categoria.getNombreCategoria() + ", nombre=" + nombre + ", descripcion=" + descripcion + ", estado=" + estado + ", anioAdquisicion=" + anioAdquisicion + ", rutaImagen=" + rutaImagen + ", precioVenta=" + precioVenta + ", fechaDePublicacion=" + fechaDePublicacion + '}';
+    }
+
+    public LocalDate getFechaDePublicacion() {
+        return fechaDePublicacion;
+    }
+
+    public void setFechaDePublicacion(LocalDate fechaDePublicacion) {
+        this.fechaDePublicacion = fechaDePublicacion;
     }
     
 }

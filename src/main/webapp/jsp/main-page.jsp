@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/main-page.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexbox-classes.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">

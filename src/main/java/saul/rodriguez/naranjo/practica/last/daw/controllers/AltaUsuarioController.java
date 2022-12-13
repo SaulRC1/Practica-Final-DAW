@@ -28,6 +28,8 @@ public class AltaUsuarioController extends HttpServlet {
         req.getRequestDispatcher("./jsp/alta-usuario.jsp").forward(req, resp);
     }
     
-    
+    public boolean validateUser(HttpServletRequest request) {
+        return false;
+    }
     
 }

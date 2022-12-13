@@ -245,21 +245,9 @@ public class ArticuloDAO implements DataAccessObject<Articulo>{
         
         ArticuloDAO articuloDAO = new ArticuloDAO();
         
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Articulo articulo = articuloDAO.findById(1);
         
-        List<Usuario> usuarios = usuarioDAO.findAll();
-        
-        for (Usuario usuario : usuarios) {
-            System.out.println(usuario);
-            
-            List<Articulo> articulos = articuloDAO.findByUser(usuario);
-            
-            for (Articulo articulo : articulos) {
-                System.out.println(articulo);
-                
-                System.out.println("Mi usuario publicador es: " + articulo.getUsuario().getNombre());
-            }
-        }
+        //System.out.println("Fecha: " + articulo.getFechaDePublicacion().getDayOfMonth() + "/" + articulo.getFechaDePublicacion().getMonthValue() + "/" + articulo.getFechaDePublicacion().getYear());
         
     }
     
