@@ -81,7 +81,7 @@
                                 <jsp:param name="anchorAbbreviation" value="Facebook de ${usuarioPublico.nombre}"/>
                             </jsp:include>
                         </c:if>
-                        
+
                         <c:if test="${not empty usuarioPublico.twitter}">
                             <jsp:include page="../../components/perfil-usuario/anchor-tag.jsp">
                                 <jsp:param name="icon" value="${pageContext.request.contextPath}/images/components/data-tag/twitter.png"/>

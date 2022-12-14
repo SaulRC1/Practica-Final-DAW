@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexbox-classes.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/alta-usuario/prefijo-movil-tag.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
@@ -24,184 +25,199 @@
         <script src="${pageContext.request.contextPath}/js/alta-usuario.js" defer></script>
     </head>
     <body>
-        <jsp:include page="components/cabezera.jsp"></jsp:include>
-        <jsp:include page="components/menu.jsp"></jsp:include>
+        <div class="main-div flex-column flex-justify-content-start">
+            <jsp:include page="components/cabezera.jsp"></jsp:include>
+            <jsp:include page="components/menu.jsp"></jsp:include>
 
-            <div class="main-section flex-row flex-justify-content-start">
+                <div class="main-section flex-row flex-justify-content-start">
 
-                <div class="image-div flex-column flex-align-items-center flex-justify-content-start">
-                    <p class="roboto-condensed image-title">¡Registrate en Défteros Market para comenzar a vender!</p>
+                    <div class="image-div flex-column flex-align-items-center flex-justify-content-start">
+                        <p class="roboto-condensed image-title">¡Registrate en Défteros Market para comenzar a vender!</p>
 
-                    <div class="carroussel-image-div flex-column flex-align-items-center">
-                        <img src="${pageContext.request.contextPath}/images/alta_usuario/register1.png">
+                        <div class="carroussel-image-div flex-column flex-align-items-center">
+                            <img src="${pageContext.request.contextPath}/images/alta_usuario/register1.png">
+                    </div>
+                </div>
+
+                <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
+                    <form class="registro-form flex-column flex-justify-content-start" 
+                          action="${pageContext.request.contextPath}//alta-usuario"
+                          method="post" onsubmit="return validaAltaUsuario()"
+                          id="formulario-registro"
+                          enctype="multipart/form-data">
+                        
+                        <div class="upload-user-image-div flex-row flex-justify-content-start flex-align-items-center">
+                            
+                            <div class="image-container flex-column flex-align-items-center flex-justify-content-center">
+                                <img id="img-perfil" src="${pageContext.request.contextPath}/images/usuarios/default.png">
+                            </div>
+                            
+                            <input type="file" accept=".png,.jpg,.jpeg" name="imagenDeUsuario" id="imagenDeUsuario">
+                            
+                            <button id="upload-image-button" type="button">Seleccione una imagen de usuario</button>
+                            
+                        </div>
+
+                        <!-- Correo Electronico -->
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="correoElectronico">Correo Electrónico:</label>
+                            <input class="roboto-condensed form-input" type="text" id="correoElectronico" name="correoElectronico" required>
+                        </div>
+
+                        <!-- Error en el correo electronico -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="clave">Contraseña:</label>
+                            <input class="roboto-condensed form-input" type="text" id="clave" name="clave" required>
+                        </div>
+
+                        <!-- Error en la contraseña -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
+                            <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
+                        </div>
+
+                        <!-- Error en repetir contraseña -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="nombre">Nombre:</label>
+                            <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
+                        </div>
+
+                        <!-- Error en el nombre -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="codigoPostal">Código Postal:</label>
+                            <input class="roboto-condensed form-input" type="text" id="codigoPostal" name="codigoPostal" required>
+                        </div>
+
+                        <!-- Error en el codigo postal -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="facebook">Facebook:</label>
+                            <input class="roboto-condensed form-input" type="text" id="facebook" name="facebook">
+                        </div>
+
+                        <!-- Error en el facebook -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="twitter">Twitter:</label>
+                            <input class="roboto-condensed form-input" type="text" id="twitter" name="twitter">
+                        </div>
+
+                        <!-- Error en el twitter -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="telefono">Teléfono De Contacto:</label>
+                            <div id="prefijos-movil" class="prefijo-movil-dropdown-list flex-column flex-justify-content-start">
+                                <div class="prefijo-movil-dropdown-list-main flex-column flex-justify-content-start">
+                                    <div class="prefijo-movil-tag flex-row flex-justify-content-start flex-align-items-center">
+                                        <img id="prefijo-movil-list-main-img" src="${pageContext.request.contextPath}/images/alta_usuario/banderas/spain.png">
+                                        <p id="prefijo-movil-list-main-p" class="roboto-condensed">+34</p>
+                                    </div>
+                                </div>
+
+                                <div class="prefijo-movil-dropdown-list-body flex-column flex-justify-content-start hidden-element">
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="34"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/spain.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="355"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/albania.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="49"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/alemania.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="376"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/andorra.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="374"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/armenia.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="43"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/austria.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="994"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/azerbaiyan.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="32"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/belgica.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="358"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/finlandia.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="33"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/francia.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="30"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/grecia.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="39"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/italia.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="351"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/portugal.png"/>
+                                    </jsp:include>
+                                    <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
+                                        <jsp:param name="prefijo" value="44"/>
+                                        <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/reino-unido.png"/>
+                                    </jsp:include>
+                                </div>
+
+                            </div>
+
+                            <button id="prefijo-movil-list-button" class="prefijo-movil-dropdown-list-button flex-column flex-justify-content-center flex-align-items-center">
+                                <img src="${pageContext.request.contextPath}/images/components/icons/arrow-down.png">
+                            </button>
+                            <input class="roboto-condensed form-input" type="text" id="telefono" name="telefono" placeholder="6573868498" required>
+                        </div>
+
+                        <!-- Error en telefono de contacto -->
+                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
+                            <p class="form-error">Error</p>
+                        </div>
+
+                        <input class="roboto-condensed form-submit-button" type="submit" value="¡Registrame!">
+                    </form> 
                 </div>
             </div>
 
-            <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
-                <form class="registro-form flex-column flex-justify-content-start" 
-                      action="${pageContext.request.contextPath}//alta-usuario"
-                      method="post" onsubmit="return validaAltaUsuario()"
-                      id="formulario-registro">
-
-                    <!-- Correo Electronico -->
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="correoElectronico">Correo Electrónico:</label>
-                        <input class="roboto-condensed form-input" type="text" id="correoElectronico" name="correoElectronico" required>
-                    </div>
-
-                    <!-- Error en el correo electronico -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <!-- Contraseña -->
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="clave">Contraseña:</label>
-                        <input class="roboto-condensed form-input" type="text" id="clave" name="clave" required>
-                    </div>
-
-                    <!-- Error en la contraseña -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
-                        <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
-                    </div>
-
-                    <!-- Error en repetir contraseña -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="nombre">Nombre:</label>
-                        <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
-                    </div>
-
-                    <!-- Error en el nombre -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="codigoPostal">Código Postal:</label>
-                        <input class="roboto-condensed form-input" type="text" id="codigoPostal" name="codigoPostal" required>
-                    </div>
-
-                    <!-- Error en el codigo postal -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="facebook">Facebook:</label>
-                        <input class="roboto-condensed form-input" type="text" id="facebook" name="facebook">
-                    </div>
-
-                    <!-- Error en el facebook -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="twitter">Twitter:</label>
-                        <input class="roboto-condensed form-input" type="text" id="twitter" name="twitter">
-                    </div>
-
-                    <!-- Error en el twitter -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
-                        <label class="roboto-condensed form-label" for="telefono">Teléfono De Contacto:</label>
-                        <div id="prefijos-movil" class="prefijo-movil-dropdown-list flex-column flex-justify-content-start">
-                            <div class="prefijo-movil-dropdown-list-main flex-column flex-justify-content-start">
-                                <div class="prefijo-movil-tag flex-row flex-justify-content-start flex-align-items-center">
-                                    <img id="prefijo-movil-list-main-img" src="${pageContext.request.contextPath}/images/alta_usuario/banderas/spain.png">
-                                    <p id="prefijo-movil-list-main-p" class="roboto-condensed">+34</p>
-                                </div>
-                            </div>
-
-                            <div class="prefijo-movil-dropdown-list-body flex-column flex-justify-content-start hidden-element">
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="34"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/spain.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="355"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/albania.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="49"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/alemania.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="376"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/andorra.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="374"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/armenia.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="43"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/austria.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="994"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/azerbaiyan.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="32"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/belgica.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="358"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/finlandia.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="33"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/francia.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="30"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/grecia.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="39"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/italia.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="351"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/portugal.png"/>
-                                </jsp:include>
-                                <jsp:include page="components/alta-usuario/prefijo-movil-tag.jsp">
-                                    <jsp:param name="prefijo" value="44"/>
-                                    <jsp:param name="bandera" value="${pageContext.request.contextPath}/images/alta_usuario/banderas/reino-unido.png"/>
-                                </jsp:include>
-                            </div>
-
-                        </div>
-
-                        <button id="prefijo-movil-list-button" class="prefijo-movil-dropdown-list-button flex-column flex-justify-content-center flex-align-items-center">
-                            <img src="${pageContext.request.contextPath}/images/components/icons/arrow-down.png">
-                        </button>
-                        <input class="roboto-condensed form-input" type="text" id="telefono" name="telefono" placeholder="6573868498" required>
-                    </div>
-
-                    <!-- Error en telefono de contacto -->
-                    <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                        <p class="form-error">Error</p>
-                    </div>
-
-                    <input class="roboto-condensed form-submit-button" type="submit" value="¡Registrame!">
-                </form> 
-            </div>
+            <jsp:include page="components/footer.jsp"></jsp:include>
         </div>
-
-        <jsp:include page="components/footer.jsp"></jsp:include>
     </body>
 </html>

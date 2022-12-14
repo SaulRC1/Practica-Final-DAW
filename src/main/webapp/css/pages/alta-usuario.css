@@ -3,23 +3,21 @@
     padding: 0;
 }
 
-hmtl {
-    width: 100vw;
-    height: 100vh;
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    background-color: #ddd3ee;
+.main-div {
+    height: 100%;
+    width: 100%;
+    background-color: purple;
+    flex-wrap: wrap;
 }
 
 .main-section {
     height: calc(100% - 130px);
-    min-height: 100px;
-    overflow: auto;
+    width: 100%;
 }
 
 .image-div {
@@ -42,6 +40,8 @@ body {
 .form-div {
     background-color: red;
     width: 57%;
+    min-width: 400px;
+    overflow: auto;
 }
 
 .registro-form {
@@ -111,4 +111,35 @@ body {
 .prefijo-movil-dropdown-list-button img {
     height: 60%;
 }
+
+.upload-user-image-div {
+    width: 100%;
+    min-height: 200px;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: yellowgreen;
+}
+
+.upload-user-image-div img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-user-image-div input {
+    display: none;
+}
+
+.image-container {
+    border: 5px solid purple;
+    border-radius: 50%;
+    background-color: aqua;
+    height: 170px;
+    width: 170px;
+    margin-right: 10px;
+}
+
+
 

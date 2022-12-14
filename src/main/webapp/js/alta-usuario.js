@@ -11,6 +11,18 @@ for(let i = 0; i < elementosPrefijosMoviles.length; i++) {
     
 }
 
+//Click al boton para subir imagenes
+document.getElementById("upload-image-button").addEventListener("click", () => {
+    document.getElementById("imagenDeUsuario").click();
+});
+
+//El usuario sube una imagen
+document.getElementById("imagenDeUsuario").addEventListener("change", () => {
+    
+    cambiaImagenUsuario();
+    
+});
+
 //############################## FUNCIONES #####################################
 
 function prefijoMovilListButtonClick() {
@@ -88,6 +100,23 @@ function validaTwitter(twitter) {
 
 function validaTelefono() {
     
+}
+
+function cambiaImagenUsuario() {
+   
+    let uploadedFile = document.getElementById("imagenDeUsuario").files[0];
+    
+    let image = new FileReader();
+    
+    image.readAsDataURL(uploadedFile);
+    
+    image.onload = function(oFREvent) {
+        
+        let imagenUsuario = document.getElementById("img-perfil").src 
+                = oFREvent.target.result;
+        
+    };
+   
 }
 
 
