@@ -6,6 +6,7 @@ package saul.rodriguez.naranjo.practica.last.daw.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +17,29 @@ import javax.servlet.http.HttpServletResponse;
  * @author SaulRC1
  */
 @WebServlet(urlPatterns = {"/alta-usuario"})
+@MultipartConfig
 public class AltaUsuarioController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        String correoElectronico = req.getParameter("correoElectronico");
+        
+        String password;
+        
+        String repetirPassword;
+        
+        String nombre;
+        
+        String codigoPostal;
+        
+        String facebook;
+        
+        String twitter;
+        
+        String telefonoDeContacto;
+        
+        System.out.println("Correo Electronico: " + correoElectronico);
         
     }
 
@@ -31,5 +51,7 @@ public class AltaUsuarioController extends HttpServlet {
     public boolean validateUser(HttpServletRequest request) {
         return false;
     }
+    
+    
     
 }

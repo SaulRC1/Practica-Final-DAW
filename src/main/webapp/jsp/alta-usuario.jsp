@@ -41,8 +41,8 @@
 
                 <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
                     <form class="registro-form flex-column flex-justify-content-start" 
-                          action="${pageContext.request.contextPath}//alta-usuario"
-                          method="post" onsubmit="return validaAltaUsuario()"
+                          action="${pageContext.request.contextPath}/alta-usuario"
+                          method="post" onsubmit=""
                           id="formulario-registro"
                           enctype="multipart/form-data">
                         
