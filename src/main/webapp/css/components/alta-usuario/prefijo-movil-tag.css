@@ -1,6 +1,7 @@
 .prefijo-movil-tag {
     height: 25px;
     background-color: white;
+    cursor: pointer;
 }
 
 .prefijo-movil-tag:hover {
@@ -11,5 +12,10 @@
     height: 90%;
     margin-left: 5px;
     margin-right: 5px;
+    cursor: pointer;
+}
+
+.prefijo-movil-tag p {
+    cursor: pointer;
 }
 

@@ -55,8 +55,41 @@ function prefijoMovilListButtonClick() {
 }
 
 function prefijoMovilListElementClick(event) {
-    alert(event.target.childNodes[0]);
-    console.log(event.target.childNodes[3].innerHTML.textContent);
+    
+    let mainListElementImage = document.getElementById("prefijo-movil-list-main-img");
+    
+    let mainListElementPrefix = document.getElementById("prefijo-movil-list-main-p");
+    
+    let prefijoTelefonoFormulario = document.getElementById("prefijo-movil");
+    
+    if(event.target.parentNode.classList.contains("prefijo-movil-tag")) {
+        //alert(event.target.parentNode.getElementsByTagName('p')[0].innerHTML);
+        
+        let ownImage = event.target.parentNode.getElementsByTagName('img')[0].src;
+        
+        mainListElementImage.src = ownImage;
+                
+        let ownPrefix = event.target.parentNode.getElementsByTagName('p')[0].innerHTML;
+        
+        mainListElementPrefix.innerText = ownPrefix.toString();
+        
+        prefijoTelefonoFormulario.value = ownPrefix.toString();
+        
+    } else {
+        let ownImage = event.target.getElementsByTagName('img')[0].src;
+        
+        mainListElementImage.src = ownImage;
+        
+        let ownPrefix = event.target.getElementsByTagName('p')[0].innerHTML;
+        
+        mainListElementPrefix.innerText = ownPrefix.toString();
+        
+        prefijoTelefonoFormulario.value = ownPrefix.toString();
+        //alert(event.target.getElementsByTagName('p')[0].innerHTML);
+    }
+    
+    document.getElementById("prefijo-movil-list-button").click();
+    //console.log(event.target.childNodes[3].innerHTML.textContent);
 }
 
 function validaAltaUsuario() {
@@ -65,25 +98,66 @@ function validaAltaUsuario() {
     let registroForm = document.getElementById("formulario-registro");
 
     //Obtenemos correo electrónico
-    let correoElectronico = registroForm.elements["correoElectronico"];
+    let correoElectronico = registroForm.elements["correoElectronico"].value;
 
     if (!validaCorreoElectronico(correoElectronico)) {
+        alert("El correo electrónico no es válido, por favor, asegurese de que lo ha" +
+               "introducido correctamente");
         return false;
     }
 
-    let clave = registroForm.elements["clave"];
+    let clave = registroForm.elements["clave"].value;
 
-    let repetirClave = registroForm.elements["repetirClave"];
+    let repetirClave = registroForm.elements["repetirClave"].value;
+    
+    if(!validaClave(clave, repetirClave)) {
+        
+        if(clave !== repetirClave) {
+            alert("La contraseña y la contraseña repetida deben ser iguales");
+        } else {
+            alert("La contraseña debe contener máximo 40 caractéres y mínimo 10 para ser válida");
+        }
+        
+        return false;
+    }
 
-    let nombre = registroForm.elements["nombre"];
+    let nombre = registroForm.elements["nombre"].value;
 
-    let codigoPostal = registroForm.elements["codigoPostal"];
+    let codigoPostal = registroForm.elements["codigoPostal"].value;
+    
+    if(!validaCodigoPostal(codigoPostal)) {
+        
+        alert("El codigo postal introducido no es valido");
+        
+        return false;
+    }
 
-    let facebook = registroForm.elements["facebook"];
+    let facebook = registroForm.elements["facebook"].value;
+    
+    if(facebook !== "" && !validaURL(facebook)) {
+        
+        alert("El enlace introducido de facebook no parece ser válido");
+        
+        return false;
+    }
 
-    let twitter = registroForm.elements["twitter"];
+    let twitter = registroForm.elements["twitter"].value;
+    
+    if(twitter !== "" && !validaURL(twitter)) {
+        
+        alert("El enlace de twitter introducido no parece ser válido");
+        
+        return false;
+    }
 
-    let telefono = registroForm.elements["telefono"];
+    let telefono = registroForm.elements["telefono"].value;
+    
+    if(!validaTelefono(telefono)) {
+        
+        alert("El telefono introducido no es válido");
+        
+        return false;
+    }
 
     return true;
 
@@ -91,12 +165,29 @@ function validaAltaUsuario() {
 
 function validaCorreoElectronico(correoElectronico) {
     
-    let emailRegex = new RegExp();
+    let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     
+    if(!correoElectronico.match(emailRegex)) {
+        return false;
+    }
+    
+    return true;
 }
 
-function validaClave(clave) {
-
+function validaClave(clave, repetirClave) {
+    
+    if(clave !== repetirClave) {
+        return false;
+    }
+    
+    let regexClave = /^[\w\W]{10,40}$/;
+    
+    if(!clave.match(regexClave)) {
+        return false;
+    }
+    
+    return true;
+    
 }
 
 function validaNombre() {
@@ -105,19 +196,35 @@ function validaNombre() {
 
 function validaCodigoPostal(codigoPostal) {
 
+    let codigoPostalRegex = /^\d{5}$/;
+    
+    if(!codigoPostal.match(codigoPostalRegex)) {
+        return false;
+    }
+
+    return true;
 }
 
-function validaFacebook(facebook) {
-
+function validaURL(url) {
+    let regexURL = /^((https:\/\/)|(http:\/\/))[\w\W]+$/;
+    
+    if(!url.match(regexURL)) {
+        return false;
+    }
+    
+    return true;
 }
 
-function validaTwitter(twitter) {
+function validaTelefono(telefono) {
 
-}
-
-function validaTelefono() {
-
-}
+    let regexTelefono = /^\d{9}$/;
+    
+    if(!telefono.match(regexTelefono)) {
+        return false;
+    }
+    
+    return true;
+}   
 
 function cambiaImagenUsuario() {
 

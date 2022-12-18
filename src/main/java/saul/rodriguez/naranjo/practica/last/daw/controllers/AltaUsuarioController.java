@@ -39,7 +39,11 @@ public class AltaUsuarioController extends HttpServlet {
         
         String telefonoDeContacto;
         
+        String prefijoTelefono = req.getParameter("prefijo-movil");
+        
         System.out.println("Correo Electronico: " + correoElectronico);
+        
+        System.out.println("Prefijo Movil: " + prefijoTelefono);
         
     }
 

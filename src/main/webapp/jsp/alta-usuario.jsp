@@ -42,20 +42,20 @@
                 <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
                     <form class="registro-form flex-column flex-justify-content-start" 
                           action="${pageContext.request.contextPath}/alta-usuario"
-                          method="post" onsubmit=""
+                          method="post" onsubmit="return validaAltaUsuario()"
                           id="formulario-registro"
                           enctype="multipart/form-data">
-                        
+
                         <div class="upload-user-image-div flex-row flex-justify-content-start flex-align-items-center">
-                            
+
                             <div class="image-container flex-column flex-align-items-center flex-justify-content-center">
                                 <img id="img-perfil" src="${pageContext.request.contextPath}/images/usuarios/default.png">
                             </div>
-                            
+
                             <input type="file" accept=".png,.jpg,.jpeg" name="imagenDeUsuario" id="imagenDeUsuario">
-                            
+
                             <button id="upload-image-button" type="button">Seleccione una imagen de usuario</button>
-                            
+
                         </div>
 
                         <!-- Correo Electronico -->
@@ -129,6 +129,8 @@
                         <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
                             <p class="form-error">Error</p>
                         </div>
+                        
+                        <input id="prefijo-movil" name="prefijo-movil" type="text" class="hidden-element" value="+34">
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="telefono">Teléfono De Contacto:</label>
@@ -201,7 +203,7 @@
 
                             </div>
 
-                            <button id="prefijo-movil-list-button" class="prefijo-movil-dropdown-list-button flex-column flex-justify-content-center flex-align-items-center">
+                            <button type="button" id="prefijo-movil-list-button" class="prefijo-movil-dropdown-list-button flex-column flex-justify-content-center flex-align-items-center">
                                 <img src="${pageContext.request.contextPath}/images/components/icons/arrow-down.png">
                             </button>
                             <input class="roboto-condensed form-input" type="text" id="telefono" name="telefono" placeholder="6573868498" required>
