@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Usuario de la aplicación.
@@ -22,6 +23,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "USUARIO")
 public class Usuario {
+    
+    @Transient
+    public static final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    
+    @Transient
+    public static final String PASSWORD_REGEX = "^[\\w\\W]{10,40}$";
+    
+    @Transient
+    public static final String CODIGO_POSTAL_REGEX = "^\\d{5}$";
+    
+    @Transient
+    public static final String URL_REGEX = "^((https:\\/\\/)|(http:\\/\\/))[\\w\\W]+$";
+    
+    @Transient
+    public static final String TELEFONO_REGEX = "^\\d{9}$";
+    
+    @Transient
+    public static final int MAXIMUM_PROFILE_PICTURE_SIZE = 200;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

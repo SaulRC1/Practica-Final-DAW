@@ -15,6 +15,7 @@
         <link rel="icon" href="${pageContext.request.contextPath}/images/omega.png">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/alta-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexbox-classes.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/buttons.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
@@ -42,7 +43,7 @@
                 <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
                     <form class="registro-form flex-column flex-justify-content-start" 
                           action="${pageContext.request.contextPath}/alta-usuario"
-                          method="post" onsubmit="return validaAltaUsuario()"
+                          method="post" onsubmit=""
                           id="formulario-registro"
                           enctype="multipart/form-data">
 
@@ -54,7 +55,7 @@
 
                             <input type="file" accept=".png,.jpg,.jpeg" name="imagenDeUsuario" id="imagenDeUsuario">
 
-                            <button id="upload-image-button" type="button">Seleccione una imagen de usuario</button>
+                            <button class="defteros-button roboto-condensed" id="upload-image-button" type="button">Seleccione una imagen de usuario</button>
 
                         </div>
 

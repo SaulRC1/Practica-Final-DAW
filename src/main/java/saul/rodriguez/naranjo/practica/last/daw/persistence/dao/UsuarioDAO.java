@@ -165,7 +165,7 @@ public class UsuarioDAO implements DataAccessObject<Usuario> {
         
         List<Usuario> listaDeUsuarios = usuarioDAO.findAll();
         
-        Usuario usuario = usuarioDAO.findByCorreoElectronico("pepe567@gmail.com");
+        Usuario usuario = usuarioDAO.findByCorreoElectronico("godot.cluster.blazar@gmail.com");
         
         System.out.println(usuario);
         
@@ -230,7 +230,9 @@ public class UsuarioDAO implements DataAccessObject<Usuario> {
             query.setParameter("correoElectronico", correoElectronico);
             query.addEntity(Usuario.class);
 
-            returnedUsuario = (Usuario) query.list().get(0);
+            if(!query.list().isEmpty()) {
+                returnedUsuario = (Usuario) query.list().get(0);
+            }
 
             transaction.commit();
 

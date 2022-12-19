@@ -48,6 +48,7 @@ html, body {
     background-color: purple;
     height: 100%;
     width: 100%;
+    z-index: 0;
 }
 
 .form-element {
@@ -90,6 +91,7 @@ html, body {
 .prefijo-movil-dropdown-list-body {
     overflow: auto;
     min-height: 70px;
+    z-index: 1;
 }
 
 .prefijo-movil-dropdown-list-main {
