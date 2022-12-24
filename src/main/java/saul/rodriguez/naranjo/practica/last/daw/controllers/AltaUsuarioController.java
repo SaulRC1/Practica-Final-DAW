@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package saul.rodriguez.naranjo.practica.last.daw.controllers;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,7 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import saul.rodriguez.naranjo.practica.last.daw.models.Usuario;
+import saul.rodriguez.naranjo.practica.last.daw.models.error.processing.RegisterFormError;
 import saul.rodriguez.naranjo.practica.last.daw.persistence.dao.UsuarioDAO;
 
 /**
@@ -23,10 +24,41 @@ import saul.rodriguez.naranjo.practica.last.daw.persistence.dao.UsuarioDAO;
 @MultipartConfig
 public class AltaUsuarioController extends HttpServlet {
    
+    private static final String EMAIL_ERROR_MESSAGE = "El email introducido no es válido";
+    
+    private static final String PASSWORD_ERROR_MESSAGE = "La contraseña y la contraseña repetida deben ser iguales,"
+            + " y contener como mínimo 10 caractéres y máximo 40";
+    
+    private static final String CODIGO_POSTAL_ERROR_MESSAGE = "El codigo postal introducido no es valido";
+    
+    private static final String URL_ERROR_MESSAGE = "El enlace introducido parece no ser válido";
+    
+    private static final String TELEFONO_ERROR_MESSAGE = "El telefono introducido no es válido";
+    
+    private static final String IMAGE_ERROR_MESSAGE = "El archivo o imagen subida no es valido, "
+            + "la imagen debe ser .png o .jpg/jpeg y no superar los 200 megabytes de tamaño";
+    
+    private static final String JPG_JPEG_MIME_TYPE = "image/jpeg";
+    
+    private static final String PNG_MIME_TYPE = "image/png";
+    
+    private static final int CONVERSION_RATE_MEGABYTES_TO_BYTES = 1024 * 1024;
+    
+    private static final int MAXIMUM_IMAGE_MB_SIZE = 200;
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        validateUser(req);
+        //Limpiara la sesion de los errores previos
+        resetFormErrors(req.getSession());
+        
+        if(validateUser(req)) {
+            
+            Usuario usuario = buildUsuarioFromRequest(req);
+            
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/alta-usuario");
+        }
         
     }
 
@@ -42,6 +74,9 @@ public class AltaUsuarioController extends HttpServlet {
         System.out.println("Correo Electronico: " + correoElectronico);
         
         if(!validarCorreoElectronico(correoElectronico)) {
+            
+            request.getSession().setAttribute("errorCorreoElectronico", EMAIL_ERROR_MESSAGE);
+            
             return false;
         }
         
@@ -54,6 +89,9 @@ public class AltaUsuarioController extends HttpServlet {
         System.out.println("Repetir Password: " + repetirPassword);
         
         if(!validarPassword(password, repetirPassword)) {
+            
+            request.getSession().setAttribute("errorPassword", PASSWORD_ERROR_MESSAGE);
+            
             return false;
         }
         
@@ -66,6 +104,9 @@ public class AltaUsuarioController extends HttpServlet {
         System.out.println("Codigo Postal: " + codigoPostal);
         
         if(!validarCodigoPostal(codigoPostal)) {
+            
+            request.getSession().setAttribute("errorCodigoPostal", CODIGO_POSTAL_ERROR_MESSAGE);
+            
             return false;
         }
         
@@ -74,6 +115,9 @@ public class AltaUsuarioController extends HttpServlet {
         System.out.println("Facebook: " + facebook);
         
         if(!validarURL(facebook)) {
+            
+            request.getSession().setAttribute("errorFacebook", URL_ERROR_MESSAGE);
+            
             return false;
         }
         
@@ -82,6 +126,9 @@ public class AltaUsuarioController extends HttpServlet {
         System.out.println("Twitter: " + twitter);
         
         if(!validarURL(twitter)) {
+            
+            request.getSession().setAttribute("errorTwitter", URL_ERROR_MESSAGE);
+            
             return false;
         }
         
@@ -89,9 +136,34 @@ public class AltaUsuarioController extends HttpServlet {
         
         System.out.println("Telefono: " + telefonoDeContacto);
         
+        if(!validarTelefono(telefonoDeContacto)) {
+            
+            request.getSession().setAttribute("errorTelefono", TELEFONO_ERROR_MESSAGE);
+            
+            return false;
+        }
+        
         String prefijoTelefono = request.getParameter("prefijo-movil");
         
         System.out.println("Prefijo Telefono: " + prefijoTelefono);
+        
+        try {
+            
+            Part filePart = request.getPart("imagenDeUsuario");
+            
+            if(!validaImagen(filePart)) {
+                
+                request.getSession().setAttribute("errorImagen", IMAGE_ERROR_MESSAGE);
+                
+                return false;
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(AltaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServletException ex) {
+            Logger.getLogger(AltaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         return true;
     }
@@ -166,9 +238,57 @@ public class AltaUsuarioController extends HttpServlet {
     
     private boolean validarTelefono(String telefono) {
         
+        if(telefono == null || telefono.trim().isEmpty()){
+            return false;
+        }
+        
+        if(!Pattern.matches(Usuario.TELEFONO_REGEX, telefono)) {
+            return false;
+        }
+        
         return true;
     }
     
+    private boolean validaImagen(Part filePart) {
+        
+        if(filePart == null) {
+            return false;
+        }
+        
+        String fileMimeType = filePart.getContentType();
+        
+        if(!fileMimeType.equals(JPG_JPEG_MIME_TYPE) && !fileMimeType.equals(PNG_MIME_TYPE)) {
+            return false;
+        }
+        
+        long fileSizeMegaBytes = filePart.getSize() / (CONVERSION_RATE_MEGABYTES_TO_BYTES);
+        
+        if(fileSizeMegaBytes > MAXIMUM_IMAGE_MB_SIZE) {
+            return false;
+        }
+        
+        return true;
+    }
     
+    private void resetFormErrors(HttpSession session) {
+        
+        session.setAttribute("errorCorreoElectronico", null);
+        
+        session.setAttribute("errorPassword", null);
+        
+        session.setAttribute("errorCodigoPostal", null);
+        
+        session.setAttribute("errorFacebook", null);
+        
+        session.setAttribute("errorTwitter", null);
+        
+        session.setAttribute("errorTelefono", null);
+        
+        session.setAttribute("errorImagen", null);
+    }
+
+    private Usuario buildUsuarioFromRequest(HttpServletRequest req) {
+        return null;
+    }
     
 }

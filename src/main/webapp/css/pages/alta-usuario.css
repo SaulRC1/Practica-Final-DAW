@@ -39,9 +39,10 @@ html, body {
 
 .form-div {
     background-color: red;
-    width: 57%;
+    width: calc(60% - 20px);
     min-width: 400px;
     overflow: auto;
+    scrollbar-color: white #b29cd9;
 }
 
 .registro-form {
@@ -78,7 +79,7 @@ html, body {
 }
 
 .form-error {
-    
+    font-size: 18px;
 }
 
 .prefijo-movil-dropdown-list {

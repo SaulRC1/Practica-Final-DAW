@@ -43,7 +43,7 @@
                 <div class="form-div flex-column flex-align-items-center flex-justify-content-start">
                     <form class="registro-form flex-column flex-justify-content-start" 
                           action="${pageContext.request.contextPath}/alta-usuario"
-                          method="post" onsubmit=""
+                          method="post" onsubmit="return validaAltaUsuario()"
                           id="formulario-registro"
                           enctype="multipart/form-data">
 
@@ -58,6 +58,13 @@
                             <button class="defteros-button roboto-condensed" id="upload-image-button" type="button">Seleccione una imagen de usuario</button>
 
                         </div>
+                            
+                        <!-- Error la imagen de perfil -->
+                        <c:if test="${not empty errorImagen}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="form-error roboto-condensed">${errorImagen}</p>
+                            </div>
+                        </c:if>
 
                         <!-- Correo Electronico -->
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -66,9 +73,11 @@
                         </div>
 
                         <!-- Error en el correo electronico -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
+                        <c:if test="${not empty errorCorreoElectronico}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="form-error roboto-condensed">${errorCorreoElectronico}</p>
+                            </div>
+                        </c:if>
 
                         <!-- Contraseña -->
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -77,28 +86,21 @@
                         </div>
 
                         <!-- Error en la contraseña -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
+                        <c:if test="${not empty errorPassword}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="roboto-condensed form-error">${errorPassword}</p>
+                            </div>
+                        </c:if>
+
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
                             <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
                         </div>
 
-                        <!-- Error en repetir contraseña -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
-
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="nombre">Nombre:</label>
                             <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
-                        </div>
-
-                        <!-- Error en el nombre -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
                         </div>
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -107,9 +109,11 @@
                         </div>
 
                         <!-- Error en el codigo postal -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
+                        <c:if test="${not empty errorCodigoPostal}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="roboto-condensed form-error">${errorCodigoPostal}</p>
+                            </div>
+                        </c:if>
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="facebook">Facebook:</label>
@@ -117,9 +121,11 @@
                         </div>
 
                         <!-- Error en el facebook -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
+                        <c:if test="${not empty errorFacebook}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="roboto-condensed form-error">${errorFacebook}</p>
+                            </div>
+                        </c:if>
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="twitter">Twitter:</label>
@@ -127,10 +133,12 @@
                         </div>
 
                         <!-- Error en el twitter -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
-                        
+                        <c:if test="${not empty errorTwitter}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="roboto-condensed form-error">${errorTwitter}</p>
+                            </div>
+                        </c:if>
+
                         <input id="prefijo-movil" name="prefijo-movil" type="text" class="hidden-element" value="+34">
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
@@ -211,9 +219,11 @@
                         </div>
 
                         <!-- Error en telefono de contacto -->
-                        <div class="hidden-element form-element flex-row flex-justify-content-start flex-align-items-center">  
-                            <p class="form-error">Error</p>
-                        </div>
+                        <c:if test="${not empty errorTelefono}">
+                            <div class="form-element flex-row flex-justify-content-start flex-align-items-center">  
+                                <p class="roboto-condensed form-error">${errorTelefono}</p>
+                            </div>
+                        </c:if>
 
                         <input class="roboto-condensed form-submit-button" type="submit" value="¡Registrame!">
                     </form> 

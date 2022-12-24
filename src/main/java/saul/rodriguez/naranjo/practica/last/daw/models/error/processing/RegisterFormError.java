@@ -6,19 +6,19 @@ package saul.rodriguez.naranjo.practica.last.daw.models.error.processing;
  */
 public class RegisterFormError {
     
-    private String errorCorreoElectronico;
+    private String errorCorreoElectronico = null;
     
-    private String errorClave;
+    private String errorClave = null;
     
-    private String errorClaveRepetir;
+    private String errorClaveRepetir = null;
     
-    private String errorNombre;
+    private String errorNombre = null;
     
-    private String errorDireccion;
+    private String errorDireccion = null;
     
-    private String errorCodigoPostal;
+    private String errorCodigoPostal = null;
     
-    private String errorTelefonoDeContacto;
+    private String errorTelefonoDeContacto = null;
 
     public String getErrorCorreoElectronico() {
         return errorCorreoElectronico;
