@@ -102,6 +102,11 @@
                             <label class="roboto-condensed form-label" for="nombre">Nombre:</label>
                             <input class="roboto-condensed form-input" type="text" id="nombre" name="nombre" required>
                         </div>
+                        
+                        <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
+                            <label class="roboto-condensed form-label" for="direccion">Dirección:</label>
+                            <input class="roboto-condensed form-input" type="text" id="direccion" name="direccion">
+                        </div>
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="codigoPostal">Código Postal:</label>
