@@ -65,6 +65,10 @@ public class AltaUsuarioController extends HttpServlet {
         if (validateUser(req)) {
 
             Usuario usuario = buildUsuarioFromRequest(req);
+            
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            
+            usuarioDAO.save(usuario);
 
         } else {
             resp.sendRedirect(req.getContextPath() + "/alta-usuario");
@@ -370,7 +374,7 @@ public class AltaUsuarioController extends HttpServlet {
             Logger.getLogger(AltaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return null;
+        return usuario;
     }
 
 }

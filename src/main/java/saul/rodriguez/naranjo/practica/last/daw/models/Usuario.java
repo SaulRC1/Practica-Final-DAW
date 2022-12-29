@@ -12,8 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import saul.rodriguez.naranjo.practica.last.daw.utils.configuration.ServerConfig;
 
 /**
  * Usuario de la aplicación.
@@ -43,7 +46,9 @@ public class Usuario {
     public static final int MAXIMUM_PROFILE_PICTURE_SIZE = 200;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(allocationSize = 1, initialValue = 10, name = "usuario_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="usuario_sequence")
     @Column(name = "id_usuario")
     private long idUsuario;
     
@@ -73,6 +78,10 @@ public class Usuario {
     
     @Column(name = "ruta_imagen")
     private String rutaImagen;
+    
+    //Para mostrar en el html, dentro del atributo src de <img>
+    @Transient
+    private boolean tieneImagenDePerfil;
     
     /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
                fetch = FetchType.EAGER, mappedBy = "usuario")
@@ -171,6 +180,10 @@ public class Usuario {
         this.rutaImagen = rutaImagen;
     }
 
+    public boolean isTieneImagenDePerfil() {
+        return tieneImagenDePerfil;
+    }
+
     /*
     public List<Comentario> getComentariosPublicados() {
         return comentariosPublicados;
@@ -241,6 +254,22 @@ public class Usuario {
             return false;
         }
         return Objects.equals(this.correoElectronico, other.correoElectronico);
+    }
+    
+    @PostLoad
+    public void tieneImagenDePerfil() {
+        
+        //Obtenemos el directorio raiz de la app
+        String rootDirectory = ServerConfig.getServerConfig().getRootDirectory();
+        
+        //Si la ruta de la imagen contiene el directorio raiz, entonces el
+        //usuario tiene imagen de perfil
+        if(this.rutaImagen.contains(rootDirectory)) {
+            this.tieneImagenDePerfil = true;
+        } else {
+            this.tieneImagenDePerfil = false;
+        }
+        
     }
     
     

@@ -36,10 +36,18 @@
 
                         <!-- Imagen de perfil y Nombre -->
                         <div class="image-div-profile-data-div flex-row flex-justify-content-start flex-align-items-center">
-
-                            <div class="rounded-image-div flex-justify-content-start flex-align-items-center flex-row">
-                                <img class="profile-image" src="${usuarioPublico.rutaImagen}">
-                        </div>
+                        <c:choose>
+                            <c:when test="${usuarioPublico.tieneImagenDePerfil == true}">
+                                <div class="rounded-image-div flex-justify-content-start flex-align-items-center flex-row">
+                                    <img class="profile-image" src="${pageContext.request.contextPath}/imagenes?usuario=${usuarioPublico.nombre}">
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="rounded-image-div flex-justify-content-start flex-align-items-center flex-row">
+                                    <img class="profile-image" src="${usuarioPublico.rutaImagen}">
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
 
                         <div class="first-data-section flex-column flex-justify-content-start">
                             <p class="username roboto-condensed">${usuarioPublico.nombre}</p>
