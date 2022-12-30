@@ -82,7 +82,7 @@
                         <!-- Contraseña -->
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="clave">Contraseña:</label>
-                            <input class="roboto-condensed form-input" type="text" id="clave" name="clave" required>
+                            <input class="roboto-condensed form-input" type="password" id="clave" name="clave" required>
                         </div>
 
                         <!-- Error en la contraseña -->
