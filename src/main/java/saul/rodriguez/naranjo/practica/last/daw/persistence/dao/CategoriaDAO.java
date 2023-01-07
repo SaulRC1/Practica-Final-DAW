@@ -26,7 +26,41 @@ public class CategoriaDAO implements DataAccessObject<Categoria>{
     
     @Override
     public Categoria findById(long identifier) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Categoria categoria = null;
+        
+        Session session = sessionFactory.openSession();
+
+        String sqlQuery = "SELECT * FROM CATEGORIA WHERE id_categoria = :identifier";
+
+        Transaction transaction = null;
+
+        try {
+
+            transaction = session.beginTransaction();
+
+            SQLQuery query = session.createSQLQuery(sqlQuery);
+            query.setLong("identifier", identifier);
+            query.addEntity(Categoria.class);
+
+            categoria = (Categoria) query.list().get(0);
+
+            transaction.commit();
+
+        } catch (Exception e) {
+            
+            if(transaction != null) {
+                transaction.rollback();
+            }
+            
+            Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            
+        } finally {
+            
+            session.close();
+            
+        }
+
+        return categoria;
     }
 
     @Override
@@ -86,11 +120,9 @@ public class CategoriaDAO implements DataAccessObject<Categoria>{
         
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         
-        List<Categoria> categorias = categoriaDAO.findAll();
+        Categoria categoria = categoriaDAO.findById(1);
         
-        for (Categoria categoria : categorias) {
-            System.out.println(categoria);
-        }
+        System.out.println("Categoria: " + categoria.getNombreCategoria());
         
     }
 

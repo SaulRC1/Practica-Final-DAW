@@ -76,4 +76,17 @@ public class UserDirectoryBuilder {
         }
     }
 
+    public void storeArticleImage(String path, Part articleImage) throws IOException {
+        InputStream is = articleImage.getInputStream();
+
+        File articleImageFile = new File(path);
+
+        try ( FileOutputStream outputStream = new FileOutputStream(articleImageFile, false)) {
+            int read;
+            byte[] bytes = new byte[8192];
+            while ((read = is.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, read);
+            }
+        }
+    }
 }

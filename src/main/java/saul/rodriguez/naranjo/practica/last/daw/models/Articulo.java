@@ -15,7 +15,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -25,16 +27,31 @@ import javax.persistence.Table;
 @Table(name = "ARTICULO")
 public class Articulo {
     
+    @Transient
     public static final String ESTADO_NUEVO = "NUEVO";
     
+    @Transient
     public static final String ESTADO_SEMINUEVO = "SEMINUEVO";
     
+    @Transient
     public static final String ESTADO_DETERIORADO = "DETERIORADO";
     
+    @Transient
     public static final String ESTADO_ANTIGUO = "ANTIGUO";
     
+    @Transient
+    public static final String YEAR_ADQUISICION_REGEX = "^\\d{4}$";
+    
+    @Transient
+    public static final String PRECIO_VENTA_REGEX = "^\\d{1,4}(\\.\\d{1,2})?$";
+    
+    @Transient
+    public static final int MAXIMUM_PROFILE_PICTURE_SIZE_MB = 200;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(allocationSize = 1, initialValue = 100, name = "articulo_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+                    generator="articulo_sequence")
     @Column(name = "id_articulo")
     private long idArticulo;
     
@@ -89,6 +106,10 @@ public class Articulo {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Categoria getCategoria() {

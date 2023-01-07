@@ -29,7 +29,10 @@
                     <button id="subir-imagen-articulo-button" type="button" class="roboto-condensed">
                         Subir imagen
                     </button>
-
+                    
+                    <c:if test="${not empty errorImagen}">
+                            <p class="form-error roboto-condensed">${errorImagen}</p>
+                    </c:if>
                 </div>
 
                 <div class="article-data-section flex-column flex-justify-content-start">
@@ -40,7 +43,8 @@
 
 
                     <form id="formulario-publicar-articulo" class="flex-column flex-justify-content-space-evenly" 
-                          onsubmit="" method="post" action="${pageContext.request.contextPath}/publicar-articulo">
+                          onsubmit="" method="post" action="${pageContext.request.contextPath}/publicar-articulo"
+                          enctype="multipart/form-data">
 
                         <input style="display: none" type="file" name="imagen-articulo" id="imagen-articulo" accept=".png,.jpg,.jpeg">
 
@@ -49,7 +53,11 @@
 
                         <label class="roboto-condensed" for="year-adquisicion">Año de adquisicion:</label>
                         <input class="roboto-condensed" type="text" id="year-adquisicion" name="year-adquisicion" placeholder="2021">
-
+                        
+                        <c:if test="${not empty errorAnioAdquisicion}">
+                            <p class="form-error roboto-condensed">${errorAnioAdquisicion}</p>
+                        </c:if>
+                        
                         <label for="estado" class="roboto-condensed">Estado:</label>
                         <select name="estado" id="estado">
                             <option value="NUEVO">Nuevo</option>
@@ -65,12 +73,14 @@
                             </c:forEach>
                         </select>
 
-
-
                         <label class="roboto-condensed" for="precio-venta">Precio de venta (€):</label>
                         <input class="roboto-condensed" type="number" id="precio-venta" name="precio-venta"
-                               placeholder="0000.00" min="0.00" max="999999.99" step="0.01" required>
+                               placeholder="0000.00" min="0.00" max="999999.99" step="0.01"required>
 
+                        <c:if test="${not empty errorPrecioVenta}">
+                            <p class="form-error roboto-condensed">${errorPrecioVenta}</p>
+                        </c:if>
+                            
                         <label class="roboto-condensed" for="descripcion">Descripcion:</label>
                         <textarea class="roboto-condensed" id="descripcion" name="descripcion"></textarea>
 
