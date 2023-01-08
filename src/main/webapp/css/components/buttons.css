@@ -6,3 +6,24 @@
     
 }
 
+.defteros-anchor {
+    
+}
+
+.defteros-anchor-style {
+    color: black;
+    text-decoration: none;
+}
+
+.defteros-anchor-style:hover {
+    background-color: #ddd3ee;
+}
+
+.defteros-anchor-style-negative {
+    color: black;
+    text-decoration: none;
+}
+
+.defteros-anchor-style-negative:hover {
+    background-color: #b19cd9;
+}

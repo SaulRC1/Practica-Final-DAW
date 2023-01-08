@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/buttons.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/buttons.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/alta-usuario/prefijo-movil-tag.css">

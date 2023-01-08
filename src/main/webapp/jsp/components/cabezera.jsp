@@ -26,7 +26,7 @@
             </c:if>
 
             <c:if test="${empty usuario}">
-                <a class="roboto-condensed" href="${pageContext.request.contextPath}/iniciar-sesion">Iniciar sesión</a>
+                <a class="defteros-anchor defteros-anchor-style-negative roboto-condensed" href="${pageContext.request.contextPath}/iniciar-sesion">Iniciar sesión</a>
             </c:if>    
         </div>
     </div>

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/buttons.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
