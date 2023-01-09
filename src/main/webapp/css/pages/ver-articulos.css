@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.main-section {
+    height: calc(100% - 130px);
+    min-height: 100px;
+}
+
+.filters-section {
+    height: 100%;
+    width: 30%;
+    max-width: 300px;
+    min-width: 300px;
+    background-color: red;
+}
+
+.articulos-section {
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+}

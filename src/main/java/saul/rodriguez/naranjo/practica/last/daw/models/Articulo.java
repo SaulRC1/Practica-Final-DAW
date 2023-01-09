@@ -15,9 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PostLoad;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import saul.rodriguez.naranjo.practica.last.daw.utils.configuration.ServerConfig;
 
 /**
  *
@@ -83,6 +85,9 @@ public class Articulo {
     
     @Column(name = "fecha_de_publicacion", columnDefinition = "DATE")
     private LocalDate fechaDePublicacion;
+    
+    @Transient
+    private boolean tieneImagenDeArticulo;
     
     /*
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
@@ -191,5 +196,24 @@ public class Articulo {
     public void setFechaDePublicacion(LocalDate fechaDePublicacion) {
         this.fechaDePublicacion = fechaDePublicacion;
     }
-    
+
+    public boolean isTieneImagenDeArticulo() {
+        return tieneImagenDeArticulo;
+    }
+
+    public void setTieneImagenDeArticulo(boolean tieneImagenDeArticulo) {
+        this.tieneImagenDeArticulo = tieneImagenDeArticulo;
+    }
+
+    @PostLoad
+    public void determinarSiTieneImagenDeArticulo() {
+        //Obtenemos el directorio raiz de la app
+        String rootDirectory = ServerConfig.getServerConfig().getRootDirectory();
+        
+        if(this.rutaImagen.contains(rootDirectory)) {
+            this.tieneImagenDeArticulo = true;
+        } else {
+            this.tieneImagenDeArticulo = false;
+        }
+    }
 }

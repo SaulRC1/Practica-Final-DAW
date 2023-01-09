@@ -1,0 +1,16 @@
+.articulo-window-min {
+    height: 300px;
+    width: 400px;
+    background-color: red;
+}
+
+.articulo-window-min-img {
+    height: 100%;
+    width: 40%;
+    object-fit: contain;
+}
+
+.articulo-window-min-data-section {
+    
+}
+

@@ -6,7 +6,8 @@
         HOME
     </a>
 
-    <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style">
+    <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style"
+       href="${pageContext.request.contextPath}/ver-articulos">
         VER ARTÍCULOS
     </a>
 
@@ -17,13 +18,15 @@
     </c:if>
 
     <c:if test="${not empty usuario}">
-        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style">
+        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style" 
+           href="${pageContext.request.contextPath}/publicar-articulo">
             PUBLICAR ARTICULO
         </a>
     </c:if>
 
     <c:if test="${empty usuario}">
-        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style" href="${pageContext.request.contextPath}/alta-usuario">
+        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style" 
+           href="${pageContext.request.contextPath}/alta-usuario">
             ALTA
         </a>
     </c:if>
