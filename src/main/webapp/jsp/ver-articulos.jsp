@@ -41,14 +41,15 @@
                                 <jsp:param name="rutaImagen" value="${pageContext.request.contextPath}/imagen-articulo?id-articulo=${articulo.idArticulo}"/>
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
-                            </jsp:include>
-                            
+                                <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                            </jsp:include>    
                         </c:when>
                         <c:otherwise>
                             <jsp:include page="components/articulo/articulo-window-min.jsp">
                                 <jsp:param name="rutaImagen" value="${articulo.rutaImagen}"/>
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
+                                <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
                             </jsp:include>
                         </c:otherwise>
                     </c:choose>

@@ -7,18 +7,29 @@
     <!-- Seccion Nombre y Precio -->
     <div class="articulo-window-min-data-section flex-column flex-justify-content-space-evenly">
         <!-- Nombre del articulo -->
-        <div>
-            <p>
-                ${param.nombre}
-            </p>
-        </div>
+        <p class="roboto-condensed articulo-element">
+            ${param.nombre}
+        </p>
 
         <!-- Precio del articulo -->
-        <div>
-            <p>
-                ${param.precioVenta}
+        <p class="roboto-condensed articulo-element">
+            ${param.precioVenta} €
+        </p>
+
+        <!-- Codigo Postal -->
+        <div class="flex-row flex-align-items-center flex-justify-content-center">
+            <img class="codigo-postal-div-img" src="${pageContext.request.contextPath}/images/components/data-tag/pin-white.png">
+            <p class="roboto-condensed articulo-element">
+                ${param.codigoPostal}
             </p>
         </div>
 
+    </div>
+
+    <div class="articulo-see-more-div flex-column flex-justify-content-center flex-align-items-center">
+        <p class="roboto-condensed">
+            Ver más
+        </p>
+        <img src="${pageContext.request.contextPath}/images/components/icons/right-arrow.png">
     </div>
 </div>

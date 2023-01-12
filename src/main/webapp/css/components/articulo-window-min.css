@@ -1,16 +1,71 @@
 .articulo-window-min {
-    height: 300px;
-    width: 400px;
-    background-color: red;
+    height: 200px;
+    width: 300px;
+    min-height: 200px;
+    min-width: 300px;
+    max-height: 200px;
+    max-width: 300px;
+    background-color: #9754cb;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.articulo-window-min:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.articulo-window-min:hover img {
+    width: 60%;
+    background-color: #9754cb;
+    border-left-color: #9754cb;
+    border-right-color: #9754cb;
+}
+
+.articulo-window-min:hover .articulo-window-min-data-section {
+    display: none;
+}
+
+.articulo-window-min:hover .articulo-see-more-div {
+    display: flex;
 }
 
 .articulo-window-min-img {
     height: 100%;
     width: 40%;
     object-fit: contain;
+    background-color: white;
+    border-radius: 10px 0px 0px 10px;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
 }
 
 .articulo-window-min-data-section {
-    
+    height: 100%;
+    width: calc(60% - 10px);
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.articulo-element {
+    margin-left: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.articulo-see-more-div {
+    display: none;
+    height: 100%;
+    width: calc(40% - 10px);
+}
+
+.articulo-see-more-div img {
+    margin-top: 10px !important;
+    width: 40% !important;
+    background-color: white !important; 
+}
+
+.codigo-postal-div-img {
+    height: 20px;
 }
 
