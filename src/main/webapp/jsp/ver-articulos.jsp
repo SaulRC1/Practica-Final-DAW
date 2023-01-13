@@ -29,11 +29,32 @@
         
         <div class="main-section flex-row flex-justify-content-start flex-align-items-center">
             
-            <div class="filters-section flex-column flex-justify-content-start">
+            <div class="filters-section flex-column flex-justify-content-space-evenly roboto-condensed">
                 
+                <p class="filters-section-title">Filtrar Artículos</p>
+                
+                <label class="filters-section-element" >Código Postal</label>
+                <input class="filters-section-element" type="text">
+                
+                <label class="filters-section-element">Categoría</label>
+                <select class="roboto-condensed filters-section-element">
+                    <option value="default">Seleccione una categoría</option>
+                </select>
+                
+                <label class="filters-section-element">Precio mínimo</label>
+                <input class="filters-section-element" type="range" id="precio-min-slider" min="0" max="100000">
+                <input class="filters-section-element" type="text">
+                
+                <label class="filters-section-element">Precio máximo</label>
+                <input class="filters-section-element" type="range" id="precio-max-slider" min="0" max="100000">
+                <input class="filters-section-element" type="text">
+                
+                <button type="button" class="filters-section-element">
+                    Filtrar
+                </button>
             </div>
             
-            <div class="articulos-section flex-row flex-justify-content-start">
+            <div class="articulos-section flex-row flex-justify-content-space-evenly">
                 <c:forEach items="${listaArticulos}" var="articulo">
                     <c:choose>
                         <c:when test="${articulo.tieneImagenDeArticulo == true}">

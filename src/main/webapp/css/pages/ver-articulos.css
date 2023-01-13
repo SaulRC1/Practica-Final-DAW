@@ -21,8 +21,18 @@ html, body {
     background-color: red;
 }
 
+.filters-section-element {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.filters-section-title {
+    text-align: center;
+    font-size: 22px;
+}
+
 .articulos-section {
-    background-color: blue;
+    background-color: #ddd3ee;
     height: 100%;
     width: 100%;
     overflow: auto;
