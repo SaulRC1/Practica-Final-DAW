@@ -21,6 +21,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/footer.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
+        
+        <script src="${pageContext.request.contextPath}/js/ver-articulos.js" defer></script>
+        
         <title>Défteros Market | Ver Artículos</title>
     </head>
     <body>
@@ -34,22 +37,29 @@
                 <p class="filters-section-title">Filtrar Artículos</p>
                 
                 <label class="filters-section-element" >Código Postal</label>
-                <input class="filters-section-element" type="text">
+                <input class="filters-section-element" type="text" id="filtro-codigo-postal">
                 
                 <label class="filters-section-element">Categoría</label>
-                <select class="roboto-condensed filters-section-element">
+                <select class="roboto-condensed filters-section-element" id="filtro-categoria">
                     <option value="default">Seleccione una categoría</option>
+                    <c:forEach items="${listaCategorias}" var="categoria">
+                        <option value="${categoria.idCategoria}">
+                            ${categoria.nombreCategoria}
+                        </option>
+                    </c:forEach>
                 </select>
                 
                 <label class="filters-section-element">Precio mínimo</label>
-                <input class="filters-section-element" type="range" id="precio-min-slider" min="0" max="100000">
-                <input class="filters-section-element" type="text">
+                <input class="filters-section-element" type="range" id="precio-min-slider" min="0" max="1000" step="10" value="0">
+                <input class="filters-section-element" type="number" id="precio-min-input" value="0" 
+                       min="0.00" max="999999.99" step="0.01">
                 
                 <label class="filters-section-element">Precio máximo</label>
-                <input class="filters-section-element" type="range" id="precio-max-slider" min="0" max="100000">
-                <input class="filters-section-element" type="text">
+                <input class="filters-section-element" type="range" id="precio-max-slider" min="0" max="1000" step="10" value="0">
+                <input class="filters-section-element" type="number" value="0" id="precio-max-input" 
+                       min="0.00" max="999999.99" step="0.01">
                 
-                <button type="button" class="filters-section-element">
+                <button id="filter-button" type="button" class="filters-section-element">
                     Filtrar
                 </button>
             </div>
