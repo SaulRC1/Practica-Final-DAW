@@ -28,8 +28,10 @@
         <jsp:include page="components/cabezera.jsp"></jsp:include>
         <jsp:include page="components/menu.jsp"></jsp:include>
         
-        <div class="main-section flex-row flex-justify-content-space-evenly">
-            <c:forEach items="${listaArticulos}" var="articulo">
+        <div class="main-div flex-row flex-justify-content-start flex-align-items-center">
+            
+            <div class="main-section flex-row flex-justify-content-space-evenly">
+                <c:forEach items="${listaArticulos}" var="articulo">
                     <c:choose>
                         <c:when test="${articulo.tieneImagenDeArticulo == true}">
                             <jsp:include page="components/articulo/articulo-window-min.jsp">
@@ -48,8 +50,16 @@
                             </jsp:include>
                         </c:otherwise>
                     </c:choose>
-                    
                 </c:forEach> 
+            </div>
+            
+            <div class="banner-section roboto-condensed flex-column flex-justify-content-space-evenly flex-align-items-center">
+
+                <p>¡Echa un vistazo a lo último!</p>
+                
+                <img src="${pageContext.request.contextPath}/images/surprised.png">
+
+            </div>
         </div>
         
         <jsp:include page="components/footer.jsp"></jsp:include>
