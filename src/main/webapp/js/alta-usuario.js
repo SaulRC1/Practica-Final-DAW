@@ -105,6 +105,11 @@ function validaAltaUsuario() {
                "introducido correctamente");
         return false;
     }
+    
+    if(existeUsuario(correoElectronico)) {
+        alert("El correo introducido ya esta asociado a una cuenta");
+        return false;
+    }
 
     let clave = registroForm.elements["clave"].value;
 
@@ -280,4 +285,27 @@ function validaImagenDeUsuario() {
 
 }
 
-
+function existeUsuario(correoElectronico) {
+    
+    let existe = false;
+    
+    let serverContext = window.location.pathname.split("/")[1];
+    
+    let urlCheckEmail = window.location.origin + "/" + serverContext + "/check-email?correoElectronico=" + correoElectronico;
+    
+    $.ajax({
+        url: urlCheckEmail,
+        method: 'GET',
+        success: (data, textStatus, jqXHR) => {
+            
+            existe = true;
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+        },
+        async: false
+    });
+    
+    return existe;
+}

@@ -24,7 +24,10 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/alta-usuario/prefijo-movil-tag.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
+        
+        <script src="${pageContext.request.contextPath}/js/jquery-3.6.3.min.js" defer></script>
         <script src="${pageContext.request.contextPath}/js/alta-usuario.js" defer></script>
+        
     </head>
     <body>
         <div class="main-div flex-column flex-justify-content-start">
