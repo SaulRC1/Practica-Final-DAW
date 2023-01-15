@@ -12,7 +12,7 @@ html, body {
 .main-div {
     height: 100%;
     width: 100%;
-    background-color: purple;
+    background-color: #ddd3ee;
 }
 
 .main-section {
@@ -21,7 +21,7 @@ html, body {
 }
 
 .profile-data-div {
-    width: 35%;
+    width: 45%;
     border-right: 5px solid white;
     background-color: #996fef; 
 }
@@ -34,7 +34,9 @@ html, body {
 
 .rounded-image-div {
     height: 90%;
-    width: 40%;
+    width: 30%;
+    max-width: 200px;
+    max-height: 200px;
     border-radius: 50%;
     background-color: white;
     border-color: white;
@@ -82,4 +84,34 @@ html, body {
     width: calc(100% - 20px);
     font-size: 22px;
     background-color: transparent;
+}
+
+.article-section {
+    width: 55%;
+    overflow: auto;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1165px) {
+    
+    .main-section {
+        flex-direction: column !important;
+        overflow: auto;
+        height: 100%;
+    }
+    
+    .profile-data-div {
+        width: calc(100% - 5px);
+        height: 100%;
+        flex-shrink: 0;
+    }
+    
+    .article-section {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    
 }

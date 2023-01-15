@@ -11,6 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <link rel="icon" href="${pageContext.request.contextPath}/images/omega.png">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/usuario/perfil/perfil-usuario.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexbox-classes.css">
@@ -22,6 +24,11 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/perfil-usuario/anchor-tag.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/buttons.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/articulo-window-min.css">
+        
+        <script src="${pageContext.request.contextPath}/js/components/articulo-window-min.js" defer></script>
+        
         <title>Perfil | ${usuarioPublico.nombre}</title>
     </head>
     <body>
@@ -101,8 +108,29 @@
                 </div>
 
                 <!-- Seccion de articulos -->
-                <div class>
-
+                <div class="article-section flex-row flex-justify-content-space-evenly">
+                    <c:forEach items="${listaArticulos}" var="articulo">
+                        <c:choose>
+                            <c:when test="${articulo.tieneImagenDeArticulo == true}">
+                                <jsp:include page="../../components/articulo/articulo-window-min.jsp">
+                                    <jsp:param name="rutaImagen" value="${pageContext.request.contextPath}/imagen-articulo?id-articulo=${articulo.idArticulo}"/>
+                                    <jsp:param name="nombre" value="${articulo.nombre}"/>
+                                    <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
+                                    <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                    <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
+                                </jsp:include>    
+                            </c:when>
+                            <c:otherwise>
+                                <jsp:include page="../../components/articulo/articulo-window-min.jsp">
+                                    <jsp:param name="rutaImagen" value="${articulo.rutaImagen}"/>
+                                    <jsp:param name="nombre" value="${articulo.nombre}"/>
+                                    <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
+                                    <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                    <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
+                                </jsp:include>
+                            </c:otherwise>
+                        </c:choose>   
+                    </c:forEach>
                 </div>
 
             </div>
