@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
         
         <script src="${pageContext.request.contextPath}/js/ver-articulos.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/components/articulo-window-min.js" defer></script>
         
         <title>Défteros Market | Ver Artículos</title>
     </head>
@@ -73,6 +74,7 @@
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
                                 <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
                             </jsp:include>    
                         </c:when>
                         <c:otherwise>
@@ -81,6 +83,7 @@
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
                                 <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
                             </jsp:include>
                         </c:otherwise>
                     </c:choose>

@@ -10,6 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <link rel="icon" href="${pageContext.request.contextPath}/images/omega.png">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/main-page.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexbox-classes.css">
@@ -21,6 +23,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/articulo-window-min.css">
+        
+        <script src="${pageContext.request.contextPath}/js/components/articulo-window-min.js" defer></script>
 
         <title>Défteros Market | Inicio</title>
     </head>
@@ -39,6 +43,7 @@
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
                                 <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
                             </jsp:include>    
                         </c:when>
                         <c:otherwise>
@@ -47,6 +52,7 @@
                                 <jsp:param name="nombre" value="${articulo.nombre}"/>
                                 <jsp:param name="precioVenta" value="${articulo.precioVenta}"/>
                                 <jsp:param name="codigoPostal" value="${articulo.usuario.codigoPostal}"/>
+                                <jsp:param name="idArticulo" value="${articulo.idArticulo}"/>
                             </jsp:include>
                         </c:otherwise>
                     </c:choose>

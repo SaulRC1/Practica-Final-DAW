@@ -8,6 +8,7 @@
 }
 
 .data-tag-text {
+    margin-left: 0 !important;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;

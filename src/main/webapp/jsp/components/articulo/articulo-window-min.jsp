@@ -6,6 +6,8 @@
 
     <!-- Seccion Nombre y Precio -->
     <div class="articulo-window-min-data-section flex-column flex-justify-content-space-evenly">
+        
+        <input value="${param.idArticulo}" style="display: none;">
         <!-- Nombre del articulo -->
         <p class="roboto-condensed articulo-element">
             ${param.nombre}
