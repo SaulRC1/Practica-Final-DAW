@@ -99,7 +99,7 @@
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">
                             <label class="roboto-condensed form-label" for="repetirClave">Repetir Contraseña:</label>
-                            <input class="roboto-condensed form-input" type="text" id="repetirClave" name="repetirClave" required>
+                            <input class="roboto-condensed form-input" type="password" id="repetirClave" name="repetirClave" required>
                         </div>
 
                         <div class="form-element flex-row flex-justify-content-start flex-align-items-center">

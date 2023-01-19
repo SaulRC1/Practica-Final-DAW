@@ -69,6 +69,10 @@ public class AltaUsuarioController extends HttpServlet {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             
             usuarioDAO.save(usuario);
+            
+            req.getSession().setAttribute("usuario", usuario);
+            
+            resp.sendRedirect(req.getContextPath() + "/");
 
         } else {
             resp.sendRedirect(req.getContextPath() + "/alta-usuario");

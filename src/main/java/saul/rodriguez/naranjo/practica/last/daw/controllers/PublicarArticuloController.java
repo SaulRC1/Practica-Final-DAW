@@ -56,6 +56,8 @@ public class PublicarArticuloController extends HttpServlet {
             
             articuloDAO.save(articulo);
             
+            resp.sendRedirect(req.getContextPath() + "/ver-articulos");
+            
         } else {
             resp.sendRedirect(req.getContextPath() + "/publicar-articulo");
         }
