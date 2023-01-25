@@ -216,4 +216,19 @@ public class Articulo {
             this.tieneImagenDeArticulo = false;
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if(obj instanceof Articulo) {
+            
+            Articulo objArticulo = (Articulo) obj;
+            
+            return objArticulo.idArticulo == this.idArticulo;
+        }
+        
+        return false;
+    }
+    
+    
 }

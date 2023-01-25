@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages/detalles-articulo.css">
+        
+        <script src="${pageContext.request.contextPath}/js/jquery-3.6.3.min.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/detalles-articulo.js" defer></script>
     </head>
     <body>
 
@@ -62,6 +65,14 @@
                             <div style="overflow: auto; text-align: justify; width: 100%; height: 100px;" class="flex-column">
                                 <p style="width: 80%; overflow-wrap: break-word;">${articulo.descripcion}</p>
                             </div>
+                            
+                            <input id="id-articulo-favorito" style="display:none;" type="text" value="${articulo.idArticulo}" />
+                            
+                            <c:if test="${not empty usuario}">
+                                <button type="button" class="add-favorite-button roboto-condensed">
+                                    Añadir a favoritos
+                                </button>
+                            </c:if>
                         </div>
                         
                         <div class="user-data roboto-condensed flex-column flex-justify-content-space-evenly">

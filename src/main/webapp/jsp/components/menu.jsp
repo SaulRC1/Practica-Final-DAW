@@ -12,7 +12,8 @@
     </a>
 
     <c:if test="${not empty usuario}">
-        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style">
+        <a class="menu-option roboto-condensed defteros-anchor defteros-anchor-style"
+           href="${pageContext.request.contextPath}/articulos-interes">
             MIS ARTÍCULOS DE INTERES
         </a>
     </c:if>

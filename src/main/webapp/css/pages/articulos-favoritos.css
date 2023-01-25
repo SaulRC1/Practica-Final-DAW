@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+hmtl {
+    width: 100vw;
+    height: 100vh;
+}
+
+.title-section {
+    height: 50px;
+    background-color: white;
+    font-size: 22px;
+    width: 100%;
+}
+
+.main-section {
+    width: 100%;
+    overflow: auto;
+    height: calc(100% - 50px);
+    min-height: 100px;
+    flex-wrap: wrap;
+}
+
+.main-div {
+    width: 100%;
+    height: calc(100% - 130px);
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ddd3ee;
+}
