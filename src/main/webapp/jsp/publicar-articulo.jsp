@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/greek-font.css">
         <script src="${pageContext.request.contextPath}/js/publicar-articulo.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/components/cabezera.js" defer></script>
     </head>
     <body>
         <div class="main-div flex-column flex-justify-content-start">

@@ -23,11 +23,13 @@
 .cabezera-second-section {
     width: 50%;
     height: 100%;
+    z-index: 0;
 }
 
 .cabezera-user-section {
     height: 100%;
     margin-right: 10px;
+    z-index: 0;
 }
 
 .defteros-anchor {
@@ -38,4 +40,29 @@
     align-items: center;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.user-mini-menu {
+    display: none;
+    width: 150px;
+    height: fit-content;
+    min-height: fit-content;
+    flex-shrink: 0;
+    z-index: 1;
+    background-color: #cec1e7;
+    position: fixed;
+    top: 50px;
+}
+
+.user-mini-menu a {
+    height: 50px;
+    border-bottom: 3px solid purple;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+.user-mini-menu a:hover {
+    background-color: purple;
+    color: white;
 }

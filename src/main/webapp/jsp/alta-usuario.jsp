@@ -27,6 +27,7 @@
         
         <script src="${pageContext.request.contextPath}/js/jquery-3.6.3.min.js" defer></script>
         <script src="${pageContext.request.contextPath}/js/alta-usuario.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/components/cabezera.js" defer></script>
         
     </head>
     <body>

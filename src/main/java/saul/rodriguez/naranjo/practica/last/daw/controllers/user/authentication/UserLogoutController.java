@@ -20,7 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 public class UserLogoutController extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        req.getSession().invalidate();
+        
+        req.getSession(true);
+        
+        resp.sendRedirect(req.getContextPath() + "/inicio");
     }
 }

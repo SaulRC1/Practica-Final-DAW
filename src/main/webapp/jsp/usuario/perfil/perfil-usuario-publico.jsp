@@ -28,6 +28,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/articulo-window-min.css">
         
         <script src="${pageContext.request.contextPath}/js/components/articulo-window-min.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/components/cabezera.js" defer></script>
         
         <title>Perfil | ${usuarioPublico.nombre}</title>
     </head>

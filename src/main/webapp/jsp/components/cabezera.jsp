@@ -7,7 +7,7 @@
     </div>
 
     <div class="cabezera-second-section flex-row flex-justify-content-end flex-align-items-center">
-        <div class="cabezera-user-section flex-row flex-justify-content-center flex-align-items-center">
+        <div class="cabezera-user-section flex-column flex-justify-content-center flex-align-items-center">
             <c:if test="${not empty usuario}">
                 <c:choose>
                     <c:when test="${usuario.tieneImagenDePerfil == true}">
@@ -24,11 +24,24 @@
                     </c:otherwise>
                 </c:choose>
             </c:if>
-
             <c:if test="${empty usuario}">
                 <a class="defteros-anchor defteros-anchor-style-negative roboto-condensed" href="${pageContext.request.contextPath}/iniciar-sesion">Iniciar sesión</a>
-            </c:if>    
+            </c:if>
+                <c:if test="${not empty usuario}">
+                    <div id="user-mini-menu" class="user-mini-menu flex-column flex-justify-content-start">
+                        <a href="${pageContext.request.contextPath}/usuario/publico/${usuario.nombre}" 
+                           class="roboto-condensed flex-column flex-align-items-center flex-justify-content-center">
+                            Mi perfil
+                        </a>
+
+                        <a href="${pageContext.request.contextPath}/cerrar-sesion"
+                           class="roboto-condensed flex-column flex-align-items-center flex-justify-content-center">
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </c:if>
         </div>
+        
     </div>
 
 </div>

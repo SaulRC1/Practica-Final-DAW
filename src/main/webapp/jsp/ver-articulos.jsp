@@ -24,6 +24,7 @@
         
         <script src="${pageContext.request.contextPath}/js/ver-articulos.js" defer></script>
         <script src="${pageContext.request.contextPath}/js/components/articulo-window-min.js" defer></script>
+        <script src="${pageContext.request.contextPath}/js/components/cabezera.js" defer></script>
         
         <title>Défteros Market | Ver Artículos</title>
     </head>

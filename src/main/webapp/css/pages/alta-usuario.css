@@ -38,22 +38,21 @@ html, body {
 }
 
 .form-div {
-    background-color: red;
     width: calc(60% - 20px);
     min-width: 400px;
     overflow: auto;
     scrollbar-color: white #b29cd9;
+    border-left: 5px solid purple; 
 }
 
 .registro-form {
-    background-color: purple;
     height: 100%;
-    width: 100%;
+    width: calc(100% - 15px);
+    margin-left: 10px;
     z-index: 0;
 }
 
 .form-element {
-    background-color: red;
     height: 50px;
     min-height: 50px;
     margin-bottom: 1.5%;
@@ -62,7 +61,6 @@ html, body {
 .form-label {
     font-size: 18px;
     margin-right: 10px;
-    background-color: green;
 }
 
 .form-input {
@@ -121,7 +119,6 @@ html, body {
     height: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: yellowgreen;
 }
 
 .upload-user-image-div img {
@@ -138,7 +135,7 @@ html, body {
 .image-container {
     border: 5px solid purple;
     border-radius: 50%;
-    background-color: aqua;
+    background-color: #b19cd9;
     height: 170px;
     width: 170px;
     margin-right: 10px;
