@@ -35,7 +35,9 @@ public class DetallesArticuloController extends HttpServlet {
 
             req.getSession().setAttribute("articulo", articulo);
             
-            List<Comentario> listaComentarios = comentarioDAO.findByArticle(articulo);
+            Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+            
+            List<Comentario> listaComentarios = filtrarComentarios(articulo, usuario);
             
             req.getSession().setAttribute("listaComentarios", listaComentarios);
 
@@ -70,6 +72,37 @@ public class DetallesArticuloController extends HttpServlet {
             } 
         }
 
+    }
+    
+    private List<Comentario> filtrarComentarios(Articulo articulo, Usuario usuario) {
+        
+        List<Comentario> comentariosFiltrados = new ArrayList<>();
+        
+        List<Comentario> listaComentarios = comentarioDAO.findByArticle(articulo);
+        
+        for (Comentario comentario : listaComentarios) {
+            
+            if(comentario.getVisibilidad().equals(Comentario.VISIBILIDAD_PRIVADA)) {
+                
+                if(comentario.getUsuario().equals(usuario)) {
+                    
+                    comentariosFiltrados.add(comentario);
+                }
+                
+            } else if(comentario.getVisibilidad().equals(Comentario.VISIBILIDAD_PUBLICA)) {
+                
+                comentariosFiltrados.add(comentario);
+                
+            } else if(comentario.getVisibilidad().equals(Comentario.VISIBILIDAD_VENDEDOR)) {
+                
+                if(comentario.getArticulo().getUsuario().equals(usuario)) {
+                    
+                    comentariosFiltrados.add(comentario);
+                }
+            }
+        }
+        
+        return comentariosFiltrados;
     }
 
 }

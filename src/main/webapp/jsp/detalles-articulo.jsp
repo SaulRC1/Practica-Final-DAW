@@ -117,6 +117,28 @@
                     
                     <div class="comments-section flex-column flex-justify-content-start flex-align-items-center">
                         
+                        <c:if test="${not empty usuario}">
+                            <div class="publicar-comentario-div roboto-condensed flex-row flex-align-items-center flex-justify-content-start">
+                                <form class="publicar-comentario-form flex-row flex-align-items-center flex-justify-content-space-evenly"
+                                      method="post" action="${pageContext.request.contextPath}/publicar-comentario">
+                                    <textarea id="publicar-comentario-text" class="roboto-condensed" name="publicar-comentario-text"
+                                              placeholder="Escribe un comentario..."></textarea>
+
+                                    <select id="publicar-comentario-visibilidad" class="roboto-condensed" name="publicar-comentario-visibilidad">
+                                        <option value="PUBLICO">PUBLICO</option>
+                                        <option value="VENDEDOR">VENDEDOR</option>
+                                        <option value="PRIVADO">PRIVADO</option>
+                                    </select>
+                                    
+                                    <input style="display: none;" type="text" value="${articulo.idArticulo}" name="idArticulo">
+                                    
+                                    <input style="display: none;" type="text" name="urlActual" value="${requestScope['javax.servlet.forward.servlet_path']}?${requestScope['javax.servlet.forward.query_string']}">
+
+                                    <input class="add-favorite-button" type="submit" value="Publicar">
+                                </form>
+                            </div>
+                        </c:if>
+                        
                         <c:forEach items="${listaComentarios}" var="comentario">
                             <jsp:include page="components/comentario-component.jsp">
                                 <jsp:param name="comentario" value="${comentario.textoComentario}"/>

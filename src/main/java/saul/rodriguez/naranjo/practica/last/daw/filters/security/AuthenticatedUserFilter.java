@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Saúl Rodríguez Naranjo
  */
-@WebFilter(urlPatterns = {"/publicar-articulo", "/articulos-interes"})
+@WebFilter(urlPatterns = {"/publicar-articulo", "/articulos-interes", "/publicar-comentario"})
 public class AuthenticatedUserFilter implements Filter {
 
     @Override
