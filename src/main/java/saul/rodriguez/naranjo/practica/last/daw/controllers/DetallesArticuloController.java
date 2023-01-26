@@ -2,14 +2,17 @@ package saul.rodriguez.naranjo.practica.last.daw.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import saul.rodriguez.naranjo.practica.last.daw.models.Articulo;
+import saul.rodriguez.naranjo.practica.last.daw.models.Comentario;
 import saul.rodriguez.naranjo.practica.last.daw.models.Usuario;
 import saul.rodriguez.naranjo.practica.last.daw.persistence.dao.ArticuloDAO;
+import saul.rodriguez.naranjo.practica.last.daw.persistence.dao.ComentarioDAO;
 
 /**
  *
@@ -19,6 +22,7 @@ import saul.rodriguez.naranjo.practica.last.daw.persistence.dao.ArticuloDAO;
 public class DetallesArticuloController extends HttpServlet {
 
     private ArticuloDAO articuloDAO = new ArticuloDAO();
+    private ComentarioDAO comentarioDAO = new ComentarioDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,6 +34,10 @@ public class DetallesArticuloController extends HttpServlet {
             Articulo articulo = articuloDAO.findById(idArticulo);
 
             req.getSession().setAttribute("articulo", articulo);
+            
+            List<Comentario> listaComentarios = comentarioDAO.findByArticle(articulo);
+            
+            req.getSession().setAttribute("listaComentarios", listaComentarios);
 
             req.getRequestDispatcher("./jsp/detalles-articulo.jsp").forward(req, resp);
         }

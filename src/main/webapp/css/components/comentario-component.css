@@ -1,0 +1,31 @@
+.comment-component {
+    width: 90%;
+    background-color: #b19cd9;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.miniatura-usuario-comment {
+    height: 50px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.miniatura-usuario-comment img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 3px solid purple;
+    border-radius: 3px;
+}
+
+.miniatura-usuario-comment p {
+    color: black;
+    font-size: 16px;
+}
+
+comment-component-text {
+    width: 100%;
+}

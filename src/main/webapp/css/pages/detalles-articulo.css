@@ -107,7 +107,9 @@ html, body {
 .comments-section {
     width: 100%;
     height: 50%;
-    background-color: purple;
+    background-color: #ddd3ee;
+    border-top: 5px solid purple;
+    overflow: auto;
 }
 
 .data-tag {

@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/cabezera.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/menu.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/miniatura-usuario.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/comentario-component.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/buttons.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fonts/custom/roboto-condensed.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components/perfil-usuario/data-tag.css">
@@ -114,7 +115,17 @@
                         </div>
                     </div>
                     
-                    <div class="comments-section flex-column flex-justify-content-start">
+                    <div class="comments-section flex-column flex-justify-content-start flex-align-items-center">
+                        
+                        <c:forEach items="${listaComentarios}" var="comentario">
+                            <jsp:include page="components/comentario-component.jsp">
+                                <jsp:param name="comentario" value="${comentario.textoComentario}"/>
+                                <jsp:param name="usuarioTieneImagenDePerfil" value="${comentario.usuario.tieneImagenDePerfil}"/>
+                                <jsp:param name="nombreUsuario" value="${comentario.usuario.nombre}"/>
+                                <jsp:param name="usuarioRutaImagen" value="${comentario.usuario.rutaImagen}"/>
+                                <jsp:param name="visibilidad" value="${comentario.visibilidad}"/>
+                            </jsp:include>
+                        </c:forEach>
                         
                     </div>
                 </div>
